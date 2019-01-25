@@ -1,0 +1,1383 @@
+//===== rAthena Script =======================================
+//= Airship Assault Instance Script
+//===== Description ==========================================
+//= Heroes Trail Part-III 'Airship Assault' instance
+//===== Additional Comments: ================================= 
+//= [Official Conversion]
+//= 1.0 First Version [Ziu]
+//= 1.1 Fix Explosion Effect and add respawn attack visual mob [Ziu]
+//= 1.1a Change close;-> end; [Ziu]
+//= 2.0 English version [Secretdataz/Capuche]
+//= 2.1 Clean-up [Secretdataz]
+//= 2.2 Dialogues clean-ups [Aleos]
+//============================================================
+
+// NOTA 1: Revisar o nome do NPC Explorer Lion (Lion como nome próprio ou como Leão)
+// NOTA 2: Traduzir linha 253
+
+dali02,136,79,3	script	Explorador Lion#air1	4_M_DST_GRAND,{
+	mes "[Explorador Lion]";
+	mes "Hm ... depois de vários dias de observações, este lugar parece ser um dispositivo imprimido com as memórias de uma aeronave.";
+	next;
+	mes "[Explorador Lion]";
+	mes "...isso é diferente. Eu não tenho mais informações";
+	close;
+}
+
+dali02,142,81,3	script	Dispositivo Dimensional#air1	PORTAL,{
+	if (checkquest(15050,PLAYTIME) == 2) {
+		erasequest 15050;	// Memorial Dungeon: Airship Assault
+		erasequest 15051;
+	}
+	else if (checkquest(15051,PLAYTIME) == 2) {	// Memorial Dungeon: Airship Assault
+		mes "^ff0000O Calabouço Memorial não pode ser reinserido dentro de 23 horas após a sua última entrada.^000000";
+		close;
+	}
+	.@party_id = getcharid(1);
+	.@p_name$ = getpartyname(.@party_id);
+	.@md_name$ = "Ataque ao Dirigível";
+
+	if (BaseLevel < 125) {
+		mes "^ff0000Usuários abaixo do nível 125 não podem entrar neste calabouço.^000000";
+		close;
+	}
+	if (.@party_id < 1) {
+		mes "^ff0000Para entrar, você deve criar ou participar de um grupo de 1 ou mais membros.^000000";
+		close;
+	}
+	if (is_party_leader() == false) {
+		mes "^ff0000Este Calabouço Memorial é apenas para 1 pessoa. Apenas o líder do grupo pode entrar.^000000";
+		close;
+	}
+	.@s = select( "Liguar o Dispositivo", "Usar o Dispositivo", "Cancelar" );
+	if (is_party_leader(.@party_id) == false) {
+		mes "^ff0000Este Calabouço Memorial é apenas para 1 pessoa. Apenas o líder do grupo pode entrar.^000000";
+		close;
+	}
+	switch(.@s) {
+	case 1:
+		if (instance_create(.@md_name$) < 0) {
+			mes "Nome do Grupo: " + getpartyname( getcharid(1) );
+			mes "Nome do Jogador: " + strcharinfo(0);
+			mes "^0000ff" + .@md_name$ + "^000000 - Criação falhou!";
+			close;
+		}
+		mes "^ff0000Após o dispositivo da dimensão ser formado^000000";
+		mes "^ff0000clique para entrar novamente.^000000";
+		close;
+	case 2:
+		switch( instance_enter(.@md_name$) ) {
+		case IE_OK:
+			if (isbegin_quest(15050) == 0) {
+				setquest 15050;// Memorial Dungeon: Airship Assault
+				setquest 15051;// Memorial Dungeon: Airship Assault
+			}
+			mapannounce "dali02", "" + strcharinfo(0) + ", membro do grupo " + getpartyname( getcharid(1) ) + " entrou na instância " + .@md_name$ + ".", bc_map,"0x00ff99";
+			specialeffect2 EF_WARP;
+			// warp "1@air1",244,73;
+			end;
+		case IE_NOMEMBER:
+			mes "^ff0000Para entrar, você deve criar ou participar de um grupo de 1 ou mais membros.^000000";
+			close;
+		case IE_NOINSTANCE:
+			mes "^ff0000O líder do grupo não usou o dispositivo.^000000";
+			close;
+		case IE_OTHER:
+			mes "Um erro desconhecido ocorreu.";// Custom
+			close;
+		}
+	case 3:
+		end;
+	}
+}
+
+// Warps
+1@air1,253,54,0	warp	warp1#air1	2,2,1@air1,91,68
+1@air1,104,72,0	warp	warp2a#air1	2,2,1@air1,101,200
+1@air1,104,52,0	warp	warp2b#air1	2,2,1@air1,101,176
+1@air1,103,200,0	warp	warp3a#air1	2,2,1@air2,104,52
+1@air1,103,176,0	warp	warp3b#air1	2,2,1@air2,104,52
+1@air2,88,67,0	warp	warp4a#air2	2,2,1@air2,247,53
+1@air2,244,73,0	warp	warp5a#air2	2,2,dali02,137,82
+
+// Entrance
+1@air1,240,57,3	script	Loki#air1	4_M_ROKI2,{
+	if ('airship_status == 0) {
+		cutin "ep14_roki02",2;
+		mes "[Loki]";
+		mes "...Fico feliz que não há nenhuma dessas coisas irritantes aqui...";
+		close3;
+	}
+	cutin "ep14_roki02",2;
+	mes "[Loki]";
+	mes "...Eu vou defender este lugar, não importa o quê. Desça para o dirigível...!!";
+	close3;
+}
+
+1@air1,235,57,5	script	Fenrir#air1	4_F_FENRIR,{
+	if ('airship_status == 0) {
+		cutin "fenrir_a",2;
+		mes "[Fenrir]";
+		mes "Voando no ar com a força das máquinas... O desenvolvimento da tecnologia é verdadeiramente maravilhoso.";
+		next;
+		mes "[Fenrir]";
+		mes "Mas eu sinto que há algum tipo de poder ... Eu acho que essa aeronave não seria capaz de voar apenas pela tecnologia.";
+		close3;
+	}
+	cutin "fenrir_b",2;
+	mes "[Fenrir]";
+	mes "Eu vou enfrentá-los aqui. Caos, desça para o andar inferior do dirigível com Iris!";
+	close3;
+}
+
+1@air1,215,67,5	script	Iris#air1	4_F_IRIS,{ end; }
+1@air1,214,66,5	duplicate(Iris#air1)	Caos#air1	4_M_CHAOS
+
+1@air1,217,67,3	script	Capitão Ferlock#air1	4_M_REINDEER,{
+	if ('airship_status == 0) {
+		cutin "h_iris02",2;
+		mes "[Iris]";
+		mes "Whoa~ isso é ótimo!! O vento é tão legal~!!";
+		mes "Hooray~ nós estamos voando pelo céu!";
+		next;
+		mes "[Iris]";
+		mes "Não é maravilhoso como esta enorme nave pode voar sem o uso da magia? Caos?";
+		next;
+		cutin "h_chaos02",2;
+		mes "[Caos]";
+		mes "......";
+		next;
+		cutin "h_iris02",2;
+		mes "[Iris]";
+		mes "...?? Caos?";
+		next;
+		cutin "h_chaos02",2;
+		mes "[Caos]";
+		mes ".....Sábio Kadmon..";
+		next;
+		cutin "h_iris01",2;
+		mes "[Iris]";
+		mes "O que você está fazendo em vez de me ouvir!!!!";
+		next;
+		cutin "h_chaos03",2;
+		mes "[Caos]";
+		mes "Argh! Aaah~!!";
+		next;
+		cutin "h_iris01",2;
+		mes "[Iris]";
+		mes "Humph! Isso é o que você ganha por ser distraído!";
+		next;
+		cutin "h_chaos03",2;
+		mes "[Caos]";
+		mes "Ah...Iris!! Você está tentando me matar~!!";
+		next;
+		cutin "h_iris01",2;
+		mes "[Iris]";
+		mes "Humph! Eu não ligo se você morrer ou não...";
+		next;
+		cutin "fly_felrock2",2;
+		mes "[Capitão Ferlock]";
+		mes "Ei!! Sem bagunça ao redor do navio!!";
+		mes "Isso é o que há de errado com os jovens humanos. Eles não têm boas maneiras! Se você não tiver boas maneiras, vou expulsar todos vocês!!";
+		next;
+		cutin "h_iris02",2;
+		mes "[Iris]";
+		mes "Opa ... A propósito capitão, como este grande dirigível voa pelo céu? É tão maravilhoso!";
+		next;
+		cutin "fly_felrock2",2;
+		mes "[Capitão Ferlock]";
+		mes "Hã? Esta é uma boa pergunta.";
+		mes "Como você pode ver, nós aquecemos a caldeira grande para ferver a água, em seguida, usamos a pressão do vapor para mover os pistões que giram a roda dentada e movimenta a turbina para girar a hélice.";
+		next;
+		cutin "h_iris02",2;
+		mes "[Iris]";
+		mes "Eh... Então é assim que esse grande dirigível flutua... mas agora a sensação do mistério se foi. Eu pensei que haveria algum dispositivo místico... um pouco decepcionado...";
+		next;
+		cutin "fly_felrock2",2;
+		mes "[Capitão Ferlock]";
+		mes "Está certo. Este grande navio não pode estar no céu com apenas vapor. Então ele usa um amplificador chamado 'Runa de Engine'.";
+		next;
+		cutin "h_iris01",2;
+		mes "[Iris]";
+		mes "Runa de Engine? O que é isso?";
+		next;
+		cutin "fly_felrock2",2;
+		mes "[Capitão Ferlock]";
+		mes "É um dispositivo que usa uma pedra mágica.";
+		mes "Algo sobre fragmentos caídos de um coração partido de acordo com as lendas... uma lenda ridícula, mas isso não importa...";
+		next;
+		mes "[Capitão Ferlock]";
+		mes "A pedra é a chamada 'lágrima de Ymir'. Se colocada em junção com locomotivas como motores a vapor, a runa exsudada da pedra amplifica a energia.";
+		next;
+		mes "[Capitão Ferlock]";
+		mes "Com toda honestidade, não é exagero dizer que uma rocha do tamanho de um polegar está movendo este navio. Possui um poder incrível.";
+		next;
+		cutin "h_iris01",2;
+		mes "[Iris]";
+		mes "Aquela coisinha!!!";
+		next;
+		cutin "ep14_roki02",2;
+		mes "[Loki]";
+		mes "......huh?";
+		mes "Algo está vindo para cá...";
+		next;
+		cutin "",255;
+		mes "[Guard]";
+		mes "Alerta!! Alerta!! Uma grande unidade Wyvern às 7 horass!!";
+		next;
+		cutin "fly_felrock2",2;
+		mes "[Capitão Ferlock]";
+		mes "O que?!";
+		next;
+		cutin "",255;
+		mes "[Guarda]";
+		mes "Gre... Gremlins!! Gremlins desembarcaram da Wyvern!!";
+		for ( .@i = 1; .@i <= 8; .@i++ )
+			enablenpc instance_npcname("Gremlin#" + .@i + "air1");
+		enablenpc instance_npcname("Rotar Zairo#1air1");
+		enablenpc instance_npcname("Rotar Zairo#2air1");
+		enablenpc instance_npcname("Acidus#1air1");
+		enablenpc instance_npcname("Acidus#2air1");
+		enablenpc instance_npcname("Wywern#air1");
+		'airship_status = 1;
+		next;
+	}
+	if ('airship_status == 1) {
+		cutin "h_chaos01",2;
+		mes "[Caos]";
+		mes "Hm... O que é isso agora?";
+		next;
+		cutin "h_arcana02",2;
+		mes "[Arcana]";
+		mes "Hahahaha~ Você esperou muito tempo!!";
+		mes "Beautiful sorceress Arcana's surprise airborne monster show!!";		// ??
+		next;
+		cutin "h_chaos03",2;
+		mes "[Caos]";
+		mes "O que...que show?";
+		next;
+		cutin "h_arcana02",2;
+		mes "[Arcana]";
+		mes "Agora ... vamos começar! Gremlins~!!";
+		mes "É HORA DA FESTA~!!";
+		next;
+		cutin "",255;
+		mes "[Guarda]";
+		mes "Cap..Capitão! Isso é sério!";
+		mes "Gremlins estão por todo o dirigível!!";
+		next;
+		cutin "fly_felrock2",2;
+		mes "[Capitão Ferlock]";
+		mes "O que?! Esses são Gremlins?!";
+		mes "Seus bastardos!! Desça de lá agora!!";
+		next;
+		cutin "h_iris01",2;
+		mes "[Iris]";
+		mes "Capitão. Não há necessidade de ser tão agitado.";
+		mes "Gremlins são apenas monstros que consertam máquinas. Em vez...";
+		next;
+		cutin "fly_felrock2",2;
+		mes "[Capitão Ferlock]";
+		mes "Você não sabe do que está falando!!";
+		mes "Estamos a uma altitude de 8000!! Mesmo um pequeno defeito pode levar a um acidente mortal!";
+		next;
+		cutin "",255;
+		mes "[Guarda]";
+		mes "Argh!! Número do motor traseiro 1!!";
+		mes "...Isso é sério! Eles estão indo em direção à sala de máquinas! Temos que proteger a 'Runa do Motor'!!";
+		next;
+		cutin "fly_felrock2",2;
+		mes "[Capitão Ferlock]";
+		mes "Droga... Onde eu coloquei minha arma...";
+		mes "Ei humanos!! Deem fim a  esse incômodo enquanto eu vou ao quarto do capitão para procurar minha arma!!";
+		next;
+		mes "[Capitão Ferlock]";
+		mes "Nós temos que impedir que eles cheguem à Runa de Engine!! Se isso for destruído, o navio não poderá mais voar!!";
+		next;
+		mes "[Capitão Ferlock]";
+		mes "Droga... Se eu tivesse minha arma...";
+		next;
+		disablenpc instance_npcname("Capitão Ferlock#air1");
+		cutin "h_chaos02",2;
+		mes "[Caos]";
+		mes "Iris!! Vamos para a sala de máquinas! Loki e Fenrir, mantenham este lugar!";
+		next;
+		cutin "h_iris01",2;
+		mes "[Iris]";
+		mes "Oh...certo! Vamos lá!!";
+		close2;
+		cutin "",255;
+		if ('airship_status == 1)
+			donpcevent instance_npcname("#airshipputmob1") + "::OnStart";
+	}
+	end;
+}
+
+1@air1,236,57,3	duplicate(Iris#air1)	Gremlin#1air1	3176
+1@air1,239,57,5	duplicate(Iris#air1)	Gremlin#2air1	3176
+1@air1,230,50,5	duplicate(Iris#air1)	Gremlin#3air1	3176
+1@air1,226,62,3	duplicate(Iris#air1)	Gremlin#4air1	3176
+1@air1,241,48,3	duplicate(Iris#air1)	Gremlin#5air1	3176
+1@air1,225,40,7	duplicate(Iris#air1)	Gremlin#6air1	3176
+1@air1,236,48,7	duplicate(Iris#air1)	Gremlin#7air1	3176
+1@air1,224,66,5	duplicate(Iris#air1)	Gremlin#8air1	3176
+1@air1,213,75,5	duplicate(Iris#air1)	Wywern#air1	3180
+1@air1,218,78,3	duplicate(Iris#air1)	Acidus#1air1	3178
+1@air1,208,78,5	duplicate(Iris#air1)	Acidus#2air1	3179
+1@air1,200,78,5	duplicate(Iris#air1)	Rotar Zairo#1air1	3175
+1@air1,223,78,3	duplicate(Iris#air1)	Rotar Zairo#2air1	3175
+
+// Step 1
+1@air1,0,0,0	script	#airshipputmob1	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("#airshipputmob1");
+	enablenpc instance_npcname("Cavaleiro Viajando#air1");
+	enablenpc instance_npcname("Bêbado Desmaiado#air1");
+	enablenpc instance_npcname("Homem Rico#a");
+	enablenpc instance_npcname("Bardo de Equitação#air1");
+	enablenpc instance_npcname("Gerente da Cafeteria#air1");
+	enablenpc instance_npcname("Espírito de Jogo#air1");
+	'airship_status = 2;
+	initnpctimer;
+	end;
+OnTimer500:
+	disablenpc instance_npcname("Iris#air1");
+	disablenpc instance_npcname("Caos#air1");
+	mapannounce 'map_air1$, "Inimigos apareceram de repente e estão tentando destruir o Dirigível.", bc_map,"0xFFFF00";
+	
+	enablenpc instance_npcname("warp1#air1");
+	.@label$ = instance_npcname("#airshipputmob1") + "::OnMyMobDead";
+	monster 'map_air1$,113,66, "Beholder",3177,1, .@label$;
+	monster 'map_air1$,113,58, "Beholder",3177,1, .@label$;
+	monster 'map_air1$, 94,76, "Beholder",3177,1, .@label$;
+	monster 'map_air1$, 96,46, "Beholder",3177,1, .@label$;
+	monster 'map_air1$, 67,69, "Beholder",3177,1, .@label$;
+	monster 'map_air1$, 67,54, "Beholder",3177,1, .@label$;
+	monster 'map_air1$, 67,30, "Beholder",3177,1, .@label$;
+	monster 'map_air1$, 46,57, "Beholder",3177,1, .@label$;
+	monster 'map_air1$, 44,64, "Beholder",3177,1, .@label$;
+	monster 'map_air1$, 35,45, "Beholder",3177,1, .@label$;
+	monster 'map_air1$, 25,65, "Beholder",3177,1, .@label$;
+	monster 'map_air1$, 25,63, "Beholder",3177,1, .@label$;
+	monster 'map_air1$, 25,61, "Beholder",3177,1, .@label$;
+	monster 'map_air1$, 36,79, "Beholder",3177,1, .@label$;
+	monster 'map_air1$, 63,91, "Beholder",3177,1, .@label$;
+
+	monster 'map_air1$,106,56, "Rotar Zairo",3175,1, .@label$;
+	monster 'map_air1$,115,68, "Rotar Zairo",3175,1, .@label$;
+	monster 'map_air1$, 95,64, "Rotar Zairo",3175,1, .@label$;
+	monster 'map_air1$, 96,56, "Rotar Zairo",3175,1, .@label$;
+	monster 'map_air1$, 82,77, "Rotar Zairo",3175,1, .@label$;
+	monster 'map_air1$, 63,30, "Rotar Zairo",3175,1, .@label$;
+	monster 'map_air1$, 44,61, "Rotar Zairo",3175,1, .@label$;
+	monster 'map_air1$, 42,53, "Rotar Zairo",3175,1, .@label$;
+	monster 'map_air1$, 33,54, "Rotar Zairo",3175,1, .@label$;
+	monster 'map_air1$, 18,65, "Rotar Zairo",3175,1, .@label$;
+	monster 'map_air1$, 18,61, "Rotar Zairo",3175,1, .@label$;
+	monster 'map_air1$, 18,56, "Rotar Zairo",3175,1, .@label$;
+	monster 'map_air1$, 32,71, "Rotar Zairo",3175,1, .@label$;
+	monster 'map_air1$, 69,90, "Rotar Zairo",3175,1, .@label$;
+	monster 'map_air1$, 84,45, "Rotar Zairo",3175,1, .@label$;
+	end;
+OnTimer1500:
+	mapannounce 'map_air1$, "Vá para o fundo do Dirigível e derrote o inimigo.", bc_map,"0xFFFF00";
+	end;
+OnTimer2500:
+	mapannounce 'map_air1$, "Todos os inimigos nesse andar precisam ser derrotados para progredir.", bc_map,"0xFFFF00";
+	stopnpctimer;
+	end;
+OnMyMobDead:
+	if (mobcount( 'map_air1$, instance_npcname("#airshipputmob1") + "::OnMyMobDead" ) < 1) {
+		mapannounce 'map_air1$, "Todos os inimigos deste andar foram derrotados. Desça para o próximo andar.", bc_map,"0xFFFF00";
+		disablenpc instance_npcname("#airshipputmob1");
+		donpcevent instance_npcname("#airshipputmob2") + "::OnStart";
+		'airship_status = 3;
+	}
+	end;
+}
+
+1@air1,120,62,3	script	Cavaleiro Viajando#air1	4_M_JOB_KNIGHT1,{
+	mes "[Cavaleiro Viajando]";
+	mes "O que são essas coisas?";
+	mes "Devo cortar todos eles? Não, não é dinheiro suficiente para eu me envolver...";
+	close2;
+	emotion ET_OHNO;
+	end;
+}
+
+1@air1,95,47,3	script	Bêbado Desmaiado#air1	4_M_LIEMAN,{
+	mes "[Bêbado Desmaiado]";
+	mes "Ugh... Ficando bêbado...";
+	mes "....Zzz";
+	close2;
+	emotion ET_CONFUSE;
+	end;
+}
+
+1@air1,75,71,5	script	Homem Rico#a	1_M_JOBTESTER,{
+	mes "[Homem Rico]";
+	mes "O que... O que são esses monstros?!";
+	mes "Como você ousa interromper meu precioso horário de refeição! Guarda! Onde está voce!";
+	close;
+}
+
+1@air1,61,88,5	script	Bardo de Equitação#air1	1_M_BARD,{
+	mes "[Bardo de Equitação]";
+	mes "Whoa... Lindo~ Fantástico~";
+	mes "Até o navio dirigível é incrível~ Whoa~";
+	close;
+}
+
+1@air1,46,61,5	script	Gerente de Cafeteria#air1	1_M_PUBMASTER,{
+	mes "[Gerente de Cafeteria]";
+	mes "Eles podem parecer ameaçadores, mas esses monstros também são clientes da minha cafeteria.";
+	mes "O que você gostaria pedir, monstro?";
+	next;
+	mes "[Gerente de Cafeteria]";
+	mes "Ah... Argh! Me ajude!!";
+	close;
+}
+
+1@air1,28,67,5	script	Espírito de Jogo#air1	4_M_YURI,{
+	mes "[Espírito de Jogo]";
+	mes "Ei! Não toque nos meus cartões!";
+	mes "Fora com as mãos e pescoço!";
+	next;
+	mes "[Espírito de Jogo]";
+	mes "Huh..?!";
+	mes "Eu estava apenas sentindo isso e esses monstros apareceram?! Você está tentando roubar meu dinheiro porque eu ganhei um pouco? Hã?!";
+	close;
+}
+
+// Step 2
+1@air1,0,0,0	script	#airshipputmob2	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("#airshipputmob2");
+	enablenpc instance_npcname("Tripulação#1air1");			// Talvez esteja grande demais o nomne do NPC
+	enablenpc instance_npcname("Tripulação#2air1");			// Talvez esteja grande demais o nomne do NPC
+	enablenpc instance_npcname("Escolta do Rei#1air1");
+	enablenpc instance_npcname("Escolta do Rei#2air1");
+	enablenpc instance_npcname("Turista#1air1");
+	enablenpc instance_npcname("Turista#2air1");
+	enablenpc instance_npcname("Rei#1air1");			// Talvez fique grande, botei Rei por enquanto.
+	enablenpc instance_npcname("warp2a#air1");
+	enablenpc instance_npcname("warp2b#air1");
+	.@label$ = instance_npcname("#airshipputmob2") + "::OnMyMobDead";
+
+	monster 'map_air1$,111,190, "Gremlins",3176,1, .@label$;
+	monster 'map_air1$,120,190, "Gremlins",3176,1, .@label$;
+	monster 'map_air1$, 97,198, "Gremlins",3176,1, .@label$;
+	monster 'map_air1$, 97,201, "Gremlins",3176,1, .@label$;
+	monster 'map_air1$, 82,191, "Gremlins",3176,1, .@label$;
+	monster 'map_air1$, 82,199, "Gremlins",3176,1, .@label$;
+	monster 'map_air1$, 66,197, "Gremlins",3176,1, .@label$;
+	monster 'map_air1$, 67,161, "Gremlins",3176,1, .@label$;
+	monster 'map_air1$, 54,173, "Gremlins",3176,1, .@label$;
+	monster 'map_air1$, 69,213, "Gremlins",3176,1, .@label$;
+	monster 'map_air1$, 43,175, "Gremlins",3176,1, .@label$;
+	monster 'map_air1$, 36,190, "Gremlins",3176,1, .@label$;
+	monster 'map_air1$, 41,202, "Gremlins",3176,1, .@label$;
+	monster 'map_air1$, 26,195, "Gremlins",3176,1, .@label$;
+	monster 'map_air1$, 20,193, "Gremlins",3176,1, .@label$;
+
+	monster 'map_air1$, 82,186, "Acidus",3179,1, .@label$;
+	monster 'map_air1$, 81,202, "Acidus",3179,1, .@label$;
+	monster 'map_air1$, 97,178, "Acidus",3179,1, .@label$;
+	monster 'map_air1$, 97,175, "Acidus",3179,1, .@label$;
+	monster 'map_air1$, 67,180, "Acidus",3179,1, .@label$;
+	monster 'map_air1$, 65,157, "Acidus",3179,1, .@label$;
+	monster 'map_air1$, 64,212, "Acidus",3179,1, .@label$;
+	monster 'map_air1$, 37,173, "Acidus",3179,1, .@label$;
+	monster 'map_air1$, 37,201, "Acidus",3179,1, .@label$;
+	monster 'map_air1$, 32,186, "Acidus",3179,1, .@label$;
+	monster 'map_air1$, 20,181, "Acidus",3179,1, .@label$;
+	monster 'map_air1$, 18,186, "Acidus",3179,1, .@label$;
+	monster 'map_air1$, 55,200, "Acidus",3179,1, .@label$;
+	monster 'map_air1$,115,184, "Acidus",3179,1, .@label$;
+	monster 'map_air1$,115,189, "Acidus",3179,1, .@label$;
+	end;
+OnMyMobDead:
+	if (mobcount( 'map_air1$, instance_npcname("#airshipputmob2") + "::OnMyMobDead" ) < 1) {
+		mapannounce 'map_air1$, "Todos os inimigos deste andar foram derrotados. Vá para a entrada da sala de máquinas.", bc_map,"0xFFFF00";
+		enablenpc instance_npcname("Iris#2air1");
+		enablenpc instance_npcname("Caos#2air1");
+		enablenpc instance_npcname("Gremlin#2aair1");
+		disablenpc instance_npcname("#airshipputmob2");
+		'airship_status = 4;
+	}
+	end;
+}
+
+1@air1,93,193,3	script	Tripulação#1air1	4_M_EIN_SOLDIER,{
+	mes "[Tripulação]";
+	mes "Esta é a entrada da sala de máquinas. Detenha-os agora!";
+	close;
+}
+
+1@air1,22,182,7	script	Tripulação#2air1	4_M_EIN_SOLDIER,{
+	mes "[Tripulação]";
+	mes "Droga... Há muitos deles! A sala de máquinas pode ficar congestionada!!";
+	close;
+}
+
+1@air1,43,191,4	script	Escolta do Rei#1air1	8W_SOLDIER,{
+	mes "[Escolta do Rei]";
+	mes "Não devemos despertar nosso Rei adormecido, não importa o que aconteça!";
+	close;
+}
+1@air1,39,191,4	duplicate(Escolta do Rei#1air1)	Escolta do Rei#2air1	8W_SOLDIER
+
+1@air1,58,197,3	script	Turista#1air1	4_M_LIEMAN,{
+	mes "[" + strnpcinfo(1) + "]";
+	mes "....~Ronco~...Zzz";
+	close;
+}
+1@air1,49,169,5	duplicate(Turista#1air1)	Turista#2air1	4_M_LIEMAN
+1@air1,42,205,3	duplicate(Turista#1air1)	Rei#1air1	4_M_TRISTAN
+
+1@air1,88,187,5	duplicate(Iris#air1)	Caos#2air1	4_M_CHAOS
+1@air1,93,188,5	duplicate(Iris#air1)	Gremlin#2aair1	3176
+
+1@air1,88,189,5	script	Iris#2air1	4_F_IRIS,{
+	if ('airship_status == 4) {
+		cutin "h_chaos02",2;
+		mes "[Caos]";
+		mes "Porra ... Eles já chegaram até aqui! Graças a você, a Runa do Motor foi defendido.";
+		next;
+		cutin "h_iris01",2;
+		mes "[Iris]";
+		mes "Uh...oh!! Há um gremlin indo em direção a sala de máquinas!!";
+		next;
+		cutin "h_chaos03",2;
+		mes "[Caos]";
+		mes ".....!! Temos que pará-lo!!";
+		next;
+		cutin "",255;
+		mes "[Gremlin]";
+		mes "~Rangido~!!";
+		if ('airship_status == 4) {
+			hideonnpc instance_npcname("Gremlin#2aair1");
+			donpcevent instance_npcname("#airshipputmob3") + "::OnStart";
+			donpcevent instance_npcname("firecontrol#air2") + "::OnStart";
+			'airship_status = 5;
+		}
+		next;
+	}
+	if ('airship_status == 5) {
+		specialeffect EF_SUI_EXPLOSION,AREA, instance_npcname("Gremlin#2aair1");
+		mes "- Pop! Pop pop!";
+		next;
+		cutin "h_iris01",2;
+		mes "[Iris]";
+		mes "Eeek!!";
+		next;
+		cutin "",255;
+		mes "[Membro da Tripulação]";
+		mes "Argh! A Runa do Motor!! A sala de máquinas explodiu!! Equipe de combate a incêndios! Apagar o fogo!!";
+		next;
+		cutin "h_chaos02",2;
+		mes "[Caos]";
+		mes "Droga!! É perigoso aqui! Vamos sair daqui primeiro! Iris, depressa!!";
+		close2;
+		// 'airship_status = 6;// no consequence
+		cutin "",255;
+		disablenpc instance_npcname("Iris#2air1");
+		disablenpc instance_npcname("Caos#2air1");
+		initnpctimer;
+	}
+	end;
+OnTimer1000:
+	mapannounce 'map_air1$, "Você deve subir até o convés do dirigível enquanto derrota o inimigo.", bc_map,"0xFFFF00";
+	stopnpctimer;
+	end;
+}
+
+// Step 3
+1@air2,0,0,0	script	#airshipputmob3	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("#airshipputmob3");
+	enablenpc instance_npcname("warp3a#air1");
+	enablenpc instance_npcname("warp3b#air1");
+	enablenpc instance_npcname("Bêbado Desmaiado#air2");
+	enablenpc instance_npcname("Homem Rico#b");
+	enablenpc instance_npcname("Cavaleiro Viajando#air2");
+	enablenpc instance_npcname("Bardo de Equitação#air2");
+	enablenpc instance_npcname("Espírito de Jogo#air2");
+	enablenpc instance_npcname("Gerente da Cafeteria#air2");
+
+	.@label$ = instance_npcname("#airshipputmob3") + "::OnMyMobDead";
+	monster 'map_air2$,115,68, "Beholder",3177,1, .@label$;
+	monster 'map_air2$,106,56, "Beholder",3177,1, .@label$;
+	monster 'map_air2$, 95,64, "Beholder",3177,1, .@label$;
+	monster 'map_air2$, 96,56, "Beholder",3177,1, .@label$;
+	monster 'map_air2$, 84,45, "Beholder",3177,1, .@label$;
+	monster 'map_air2$, 63,30, "Beholder",3177,1, .@label$;
+	monster 'map_air2$, 76,77, "Beholder",3177,1, .@label$;
+	monster 'map_air2$, 69,90, "Beholder",3177,1, .@label$;
+	monster 'map_air2$, 50,57, "Beholder",3177,1, .@label$;
+	monster 'map_air2$, 42,53, "Beholder",3177,1, .@label$;
+	monster 'map_air2$, 32,71, "Beholder",3177,1, .@label$;
+	monster 'map_air2$, 18,65, "Beholder",3177,1, .@label$;
+	monster 'map_air2$, 18,61, "Beholder",3177,1, .@label$;
+	monster 'map_air2$, 18,56, "Beholder",3177,1, .@label$;
+	monster 'map_air2$, 33,54, "Beholder",3177,1, .@label$;
+
+	monster 'map_air2$,113,66, "Acidus",3178,1, .@label$;
+	monster 'map_air2$,113,58, "Acidus",3178,1, .@label$;
+	monster 'map_air2$, 94,76, "Acidus",3178,1, .@label$;
+	monster 'map_air2$, 96,46, "Acidus",3178,1, .@label$;
+	monster 'map_air2$, 67,30, "Acidus",3178,1, .@label$;
+	monster 'map_air2$, 67,54, "Acidus",3178,1, .@label$;
+	monster 'map_air2$, 67,69, "Acidus",3178,1, .@label$;
+	monster 'map_air2$, 63,91, "Acidus",3178,1, .@label$;
+	monster 'map_air2$, 51,50, "Acidus",3178,1, .@label$;
+	monster 'map_air2$, 36,79, "Acidus",3178,1, .@label$;
+	monster 'map_air2$, 25,65, "Acidus",3178,1, .@label$;
+	monster 'map_air2$, 25,63, "Acidus",3178,1, .@label$;
+	monster 'map_air2$, 25,61, "Acidus",3178,1, .@label$;
+	monster 'map_air2$, 30,45, "Acidus",3178,1, .@label$;
+	monster 'map_air2$, 38,72, "Acidus",3178,1, .@label$;
+	end;
+OnMyMobDead:
+	if (mobcount( 'map_air2$, instance_npcname("#airshipputmob3") + "::OnMyMobDead" ) < 1) {
+		mapannounce 'map_air2$, "Todos os inimigos deste andar foram derrotados. Suba para o convés.", bc_map,"0xFFFF00";
+		enablenpc instance_npcname("warp4a#air2");
+		enablenpc instance_npcname("Iris#air2");
+		enablenpc instance_npcname("Fenrir#air2");
+		enablenpc instance_npcname("Wywern#air2");
+		enablenpc instance_npcname("Wywern#2air2");
+		enablenpc instance_npcname("Wywern#3air2");
+		enablenpc instance_npcname("Acidus#1air2");
+		enablenpc instance_npcname("Acidus#2air2");
+		enablenpc instance_npcname("Rotar Zairo#1air2");
+		enablenpc instance_npcname("Rotar Zairo#2air2");
+		donpcevent instance_npcname("firecontrol2#air2") + "::OnStart";
+		disablenpc instance_npcname("#airshipputmob3");
+		'airship_status = 6;
+	}
+	end;
+}
+
+1@air2,95,47,3	duplicate(Bêbado Desmaiado#air1)	Bêbado Desmaiado#air2	4_M_LIEMAN
+1@air2,75,71,5	duplicate(Homem Rico#a)	Homem Rico#b	1_M_JOBTESTER
+
+1@air2,120,62,3	script	Cavaleiro Viajando#air2	4_M_JOB_KNIGHT1,{
+	mes "[Cavaleiro Viajando]";
+	mes "Ah.. Argh!!";
+	mes "Vai explodir! Tem que ir .. Eu tenho que ir até o outro lado do dirigível!!";
+	close;
+}
+
+1@air2,61,88,5	script	Bardo de Equitação#air2	1_M_BARD,{
+	mes "[Bardo de Equitação]";
+	mes "Whoa... Lindo~ Fantástico~";
+	mes "Até o navio dirigível é incrível~ Whoa~";
+	close;
+}
+
+1@air2,28,67,5	script	Espírito de Jogo#air2	4_M_YURI,{
+	mes "[Espírito de Jogo]";
+	mes "O que é isso? Fogo?";
+	mes "Ahhhhhh~";
+	close;
+}
+
+1@air2,46,61,5	script	Gerente da Cafeteria#air2	1_M_PUBMASTER,{
+	mes "[Gerente da Cafeteria]";
+	mes "É este dirigível... vai cair...";
+	mes "No entanto vou compartilhar o destino com este navio. Este navio e eu somos um!";
+	next;
+	mes "[Gerente da Cafeteria]";
+	mes "Ah... Argh! Me ajude!!";
+	close;
+}
+
+// Step 4
+1@air2,236,57,3	script	Gremlin#1air2	3176,{
+	end;
+OnExplosion1:
+	specialeffect EF_SUI_EXPLOSION;
+	sleep 500;
+	specialeffect EF_SUI_EXPLOSION,AREA, instance_npcname("Gremlin#2air2");
+	sleep 500;
+	specialeffect EF_SUI_EXPLOSION,AREA, instance_npcname("Gremlin#3air2");
+	end;
+OnExplosion2:
+	specialeffect EF_SUI_EXPLOSION;
+	hideonnpc instance_npcname("Gremlin#1air2");
+	sleep 500;
+	specialeffect EF_SUI_EXPLOSION,AREA, instance_npcname("Gremlin#2air2");
+	hideonnpc instance_npcname("Gremlin#2air2");
+	sleep 500;
+	specialeffect EF_SUI_EXPLOSION,AREA, instance_npcname("Gremlin#3air2");
+	hideonnpc instance_npcname("Gremlin#3air2");
+	end;
+}
+
+1@air2,239,57,5	duplicate(Iris#air1)	Gremlin#2air2	3176
+1@air2,230,50,5	duplicate(Iris#air1)	Gremlin#3air2	3176
+1@air2,226,62,3	duplicate(Iris#air1)	Gremlin#4air2	3176
+1@air2,241,48,3	duplicate(Iris#air1)	Gremlin#5air2	3176
+1@air2,225,40,7	duplicate(Iris#air1)	Gremlin#6air2	3176
+1@air2,236,48,7	duplicate(Iris#air1)	Gremlin#7air2	3176
+1@air2,224,66,5	duplicate(Iris#air1)	Gremlin#8air2	3176
+
+1@air2,229,56,5	duplicate(Iris#air1)	Loki#air2	4_M_ROKI2
+1@air2,241,54,3	duplicate(Iris#air1)	Iris#air2	4_F_IRIS
+1@air2,213,75,5	duplicate(Iris#air1)	Wywern#air2	3180
+1@air2,235,59,3	duplicate(Iris#air1)	Wywern#2air2	3180
+1@air2,235,49,3	duplicate(Iris#air1)	Wywern#3air2	3180
+1@air2,218,78,3	duplicate(Iris#air1)	Acidus#1air2	3178
+1@air2,208,78,5	duplicate(Iris#air1)	Acidus#2air2	3179
+1@air2,200,78,5	duplicate(Iris#air1)	Rotar Zairo#1air2	3175
+1@air2,223,78,3	duplicate(Iris#air1)	Rotar Zairo#2air2	3175
+
+1@air2,229,54,5	script	Fenrir#air2	4_F_FENRIR,{
+	if ('airship_status != 6)
+		end;
+	cutin "fenrir_a",2;
+	mes "[Fenrir]";
+	mes "...Esses bastardos continuam vindo.";
+	next;
+	cutin "h_guardian2",1;
+	mes "[?????]";
+	mes "Como esperado. Nossa intuição não estava errada. Foi proveitoso ter seguido a onda do mal e chegar até aqui.";
+	next;
+	cutin "h_iris01",2;
+	mes "[Iris]";
+	mes "...?? Quem vai lá!!";
+	next;
+	cutin "h_guardian2",1;
+	mes "[?????]";
+	mes "Deixe-me apresentar...";
+	next;
+	mes "[?????]";
+	mes "Shiva! Basara! Laksmi!";
+	mes "Nós somos os invencíveis sentinelas!";
+	next;
+	cutin "h_guardian1",1;
+	mes "[Heroínas]";
+	mes "Heroínas!!";
+	next;
+	cutin "h_chaos02",2;
+	mes "[Caos]";
+	mes "......";
+	next;
+	cutin "fenrir_a",2;
+	mes "[Fenrir]";
+	mes "......";
+	next;
+	cutin "h_guardian1",1;
+	mes "[Shiva]";
+	mes "Hm O que há com a reação? Todo mundo é meio morno ... Foi demais?";
+	next;
+	mes "[Basara]";
+	mes "Hm, não, não. Todo mundo é apenas cativado pela nossa grande entrada.";
+	next;
+	mes "[Laksmi]";
+	mes "Certo, certo. Essa produção para a entrada de um herói é demais!!";
+	next;
+	cutin "h_iris02",2;
+	mes "[Iris]";
+	mes "Pu....";
+	mes "Puhahahahahahahahaha";
+	next;
+	mes "[Iris]";
+	mes "O que? Quem são esses idiotas ?!";
+	mes "Basta olhar para as roupas deles!!";
+	mes "Esses trajes são de palco? Eles são celebridades e não heróis?";
+	next;
+	cutin "h_guardian3",1;
+	mes "[Shiva]";
+	mes "Humph. Você não sabe do que está falando!";
+	mes "Você sabe o quanto essas roupas custam? Isso é o que há de errado com pessoas que são apegadas à última moda.";
+	next;
+	mes "[Basara]";
+	mes "Ei! Este não é o momento de estar conversando assim! Vamos erradicar a onda do mal!!";
+	next;
+	mes "[Shiva]";
+	mes "Roger, Basara! Vamos acabar com um ataque rápido!!";
+	mes "Shuriken Huuma de Metal!! Hiyah!";		// Tradução para Huuma Metal Shuriken
+	next;
+	cutin "",255;
+	mes "- Pop! Pop pop!";
+	donpcevent instance_npcname("Gremlin#1air2") + "::OnExplosion1";
+	next;
+	cutin "h_iris01",2;
+	mes "[Iris]";
+	mes "O que, o que eles são... idiotas absolutos...";
+	next;
+	cutin "h_arcana02",2;
+	mes "[Arcana]";
+	mes "Oh? Gee!";
+	mes "Um aliado inesperado?";
+	mes "Isso pode se tornar uma festa divertida~";
+	next;
+	cutin "fenrir_a",2;
+	mes "[Fenrir]";
+	mes "Espere!";
+	mes "Seria melhor acabar com essa festa agora ... O que é isso? Freyja mandou você?";
+	next;
+	cutin "h_arcana02",2;
+	mes "[Arcana]";
+	mes "Oh. Você não tem medo.";
+	mes "Como ousa um simples humano dizer o nome de Freyja?";
+	next;
+	cutin "fenrir_a",2;
+	mes "[Fenrir]";
+	mes "Como esperado. Você é o peão de Freyja?";
+	next;
+	cutin "h_arcana01",2;
+	mes "[Arcana]";
+	mes "...Cuidado. Se você continuar assim...";
+	mes "Você receberá um castigo divino!";
+	next;
+	donpcevent instance_npcname("Gremlin#1air2") + "::OnExplosion1";
+	cutin "fenrir_b",2;
+	mes "[Fenrir]";
+	mes "...!!";
+	next;
+	cutin "h_arcana02",2;
+	mes "[Arcana]";
+	mes "Certo~ Eu vou te mostrar uma coisa boa. Algo para esfriar suas cabeças.";
+	next;
+	cutin "fenrir_b",2;
+	mes "[Fenrir]";
+	mes "Poderia ser ... A Respiração da Wyvern?!!";
+	next;
+	cutin "h_arcana02",2;
+	mes "[Arcana]";
+	mes "B.I.N.G.O. ~";
+	next;
+	cutin "",255;
+	mes "[Wyvern]";
+	mes "Wooooo..!!";
+	next;
+	cutin "fenrir_b",2;
+	mes "[Fenrir]";
+	mes "Não... não!! O dirigível!!";
+	next;
+	enablenpc instance_npcname("Loki#air2");
+	specialeffect EF_SUI_EXPLOSION,AREA, instance_npcname("Loki#air2");
+	cutin "",255;
+	mes "- Boom!!!";
+	next;
+	cutin "fenrir_a",2;
+	mes "[Fenrir]";
+	mes "...?! Loki!!";
+	next;
+	cutin "ep14_roki02",2;
+	mes "[Loki]";
+	mes "Hm...";
+	mes "Minhas roupas novas estão arruinadas...";
+	next;
+	cutin "h_arcana02",2;
+	mes "[Arcana]";
+	mes "Ooh... você jogou de volta a respiração da Wyvern... um resultado inesperado. Mas você pode suportar isso?";
+	next;
+	cutin "",255;
+	mes "[Wyvern]";
+	mes "Wooooo..!!";
+	next;
+	cutin "ep14_roki02",2;
+	mes "[Loki]";
+	mes "Pragas incômodas ...";
+	mes "Você! Eu vou enfrentar um enquanto você enfrenta o outro...";
+	close2;
+	cutin "",255;
+	if ('airship_status == 6)
+		donpcevent instance_npcname("calla#air2") + "::OnStart";
+	end;
+}
+
+1@air2,104,72,0	script	calla#air2	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	'airship_status = 7;
+	disablenpc instance_npcname("Fenrir#air2");
+	disablenpc instance_npcname("Loki#air2");
+	disablenpc instance_npcname("Iris#air2");
+	disablenpc instance_npcname("Wywern#2air2");
+	disablenpc instance_npcname("Wywern#3air2");
+	enablenpc instance_npcname("calla#air2");
+	monster 'map_air2$,235,49,"Wywern",3180,1, instance_npcname("calla#air2") + "::OnMyMobDead";// E1_G_S_NYDHOG
+	end;
+OnMyMobDead:
+	if (mobcount( 'map_air2$, instance_npcname("calla#air2") + "::OnMyMobDead" ) < 1) {
+		for ( .@i = 1; .@i <= 8; .@i++ )
+			enablenpc instance_npcname("Gremlin#" + .@i + "air2");
+		enablenpc instance_npcname("Iris#2air2");
+		enablenpc instance_npcname("Capitão Ferlock#air2");
+		disablenpc instance_npcname("calla#air2");
+		'airship_status = 8;
+	}
+	end;
+}
+
+// Step 5
+1@air2,232,51,5	script	Iris#2air2	4_F_IRIS,{
+	if ('airship_status != 8)
+		end;
+	mes "[Gremlins]";
+	mes "~Rangido~ Kooar~!!";
+	next;
+	cutin "h_iris01",2;
+	mes "[Iris]";
+	mes "Eek! Ainda há mais desses!!";
+	next;
+	cutin "fly_felrock2",2;
+	mes "[Capitão Felrock]";
+	mes "Encontrei! Minha arma! Hehehehe";
+	next;
+	mes "[Capitão Ferlock]";
+	mes "Eu vou te mostrar o que acontece quando você ataca o meu dirigível!";
+	next;
+	mes "[Capitão Ferlock]";
+	mes "Vou terminar isso com o meu Exodus Joker XIII Doom Rifle especialmente fabricado!";	// Traduzir Exodus Joker XIII Doom Rifle
+	next;
+	cutin "h_iris01",2;
+	mes "[Iris]";
+	mes "Apenas um minuto...";
+	mes "Você realmente vai disparar isso?!";
+	next;
+	cutin "fly_felrock2",2;
+	mes "[Capitão Ferlock]";
+	mes "Claro!";
+	mes "Hehehehehehehehe!";
+	next;
+	donpcevent instance_npcname("Gremlin#1air2") + "::OnExplosion2";
+	cutin "",255;
+	mes "- Bang! Babang! Bang!";
+	next;
+	mes "[Gremlins]";
+	mes "Urrrk!!";
+	next;
+	cutin "fly_felrock2",2;
+	mes "[Capitão Ferlock]";
+	mes "Muhahahaha!";
+	mes "Você gostou disso?!";
+	mes "Muhahahahaha";
+	next;
+	donpcevent instance_npcname("Gremlin#1air2") + "::OnExplosion1";
+	cutin "",255;
+	mes "- Bang! Babang! Bang!";
+	next;
+	mes "[Guarda]";
+	mes "Arrgh... o mo...motor!";
+	next;
+	cutin "fly_felrock2",2;
+	mes "[Capitão Ferlock]";
+	mes "O que?! Esses bastardos estão quebrando o motor mais ainda?!! Você está me deixando com raiva!!";
+	next;
+	cutin "h_iris01",2;
+	mes "[Iris]";
+	mes "Você é o único que fez isso!!!";
+	next;
+	donpcevent instance_npcname("Gremlin#1air2") + "::OnExplosion1";
+	cutin "",255;
+	mes "- Bang! Babang! Bang!";
+	next;
+	cutin "fly_felrock2",2;
+	mes "[Capitão Ferlock]";
+	mes "Bastardos! Morram! Morram!";
+	mes "Muhahahaha!!";
+	next;
+	cutin "h_iris01",2;
+	mes "[Iris]";
+	mes "Da maneira como as coisas estão indo o dirigível irá falhar por causa desse capitão!! Pare esse capitão!! Eu estou assustado...";
+	next;
+	mes "[Iris]";
+	mes "Como podemos pará-lo? Talvez ele recupere os sentidos se você vencê-lo em uma luta, apenas o suficiente para não morrer... Estou contando com você!!";
+	close2;
+	cutin "",255;
+	if ('airship_status == 8)
+		donpcevent instance_npcname("callb#air2") + "::OnStart";
+	end;
+}
+
+1@air2,247,51,3	duplicate(Iris#air1)	Capitão Ferlock#air2	4_M_REINDEER
+
+1@air2,104,52,0	script	callb#air2	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	'airship_status = 9;
+	for ( .@i = 1; .@i <= 8; .@i++ )
+		disablenpc instance_npcname("Gremlin#" + .@i + "air2");
+	disablenpc instance_npcname("Capitão Ferlock#air2");
+	disablenpc instance_npcname("Iris#2air2");
+	enablenpc instance_npcname("callb#air2");
+	monster 'map_air2$,247,51,"Capitão Fora de Controle",3181,1, instance_npcname("callb#air2") + "::OnMyMobDead";// E1_FELOCK
+	end;
+OnMyMobDead:
+	if (mobcount( 'map_air2$, instance_npcname("callb#air2") + "::OnMyMobDead" ) < 1)
+		initnpctimer;
+	end;
+OnTimer6000:
+	enablenpc instance_npcname("Caos#air2");
+	enablenpc instance_npcname("Capitão Ferlock#2air2");
+	disablenpc instance_npcname("callb#air2");
+	'airship_status = 10;
+	stopnpctimer;
+	end;
+}
+
+// Final
+1@air2,239,58,5	script	Caos#air2	4_M_CHAOS,{
+	if ('airship_status > 10) {
+		cutin "h_chaos02",2;
+		mes "[Caos]";
+		mes "Saia daqui agora!! Este navio está em perigo!!";
+		close3;
+	}
+	cutin "fly_felrock2",2;
+	mes "[Capitão Ferlock]";
+	mes "Oops... Eu estava atirando como um louco. Parece que muitos dos Gremlins se foram? Hehehehe";
+	next;
+	cutin "h_iris01",2;
+	mes "[Iris]";
+	mes "O dirigível está danificado por sua causa!!";
+	next;
+	cutin "h_arcana02",2;
+	mes "[Arcana]";
+	mes "Fazendo o nosso trabalho por nós. Hm, eu acho que isso é suficiente!";
+	next;
+	mes "[Arcana]";
+	mes "Então é hora de fugirmos...";
+	next;
+	cutin "h_guardian1",1;
+	mes "[Laksmi]";
+	mes "Oh... Lá, Basara. Parece que eles estão recuando.";
+	next;
+	mes "[Basara]";
+	mes "Claro!! Eles têm uma noção da nossa habilidade!! Hohoho ~";
+	next;
+	mes "[Basara]";
+	mes "Então, um último Shuriken Huuma de Metal!!";
+	next;
+	for ( .@i = 1; .@i < 4; .@i++ ) {
+		enablenpc instance_npcname("Gremlin#" + .@i + "air2");
+		hideonnpc instance_npcname("Gremlin#" + .@i + "air2");
+	}
+	donpcevent instance_npcname("Gremlin#1air2") + "::OnExplosion1";
+	cutin "",255;
+	mes "- Babang! Bang!";
+	next;
+	cutin "fenrir_b",2;
+	mes "[Fenrir]";
+	mes "Eek!! Parece que vamos cair!!";
+	mes "...muito curto... não pode alcançar...";
+	next;
+	mes "[Fenrir]";
+	mes "...Esse é o fim?";
+	mes "...Um lugar que eu não posso alcançar como antes...";
+	mes "Caps...";
+	next;
+	cutin "ep14_roki02",2;
+	mes "[Loki]";
+	mes "...Se segura";
+	next;
+	cutin "fenrir_b",2;
+	mes "[Fenrir]";
+	mes "Lo...ki?";
+	next;
+	cutin "ep14_roki02",2;
+	mes "[Loki]";
+	mes "O que você está olhando? Aqui, venha...";
+	next;
+	cutin "",255;
+	mes "[Guarda]";
+	mes "Todos os motores confirmados pararam!!";
+	mes "Nós temos que escapar rapidamente!";
+	next;
+	cutin "fly_felrock2",2;
+	mes "[Capitão Ferlock]";
+	mes "Merda...";
+	mes "Todos subam nos botes salva-vidas!";
+	mes "Embarque nos botes salva-vidas com os passageiros que são prioridades! Solte os botes salva-vidas que completaram o embarque!";
+	next;
+	cutin "h_chaos02",2;
+	mes "[Caos]";
+	mes "Espere!! Ainda há pessoas sobrando!!";
+	next;
+	cutin "fly_felrock2",2;
+	mes "[Capitão Ferlock]";
+	mes "Não há nada que possamos fazer!";
+	mes "Se continuarmos a parar, o resto estará em perigo!! É muito ruim, mas fizemos tudo o que podemos!";
+	next;
+	cutin "h_chaos03",2;
+	mes "[Caos]";
+	mes "Mas as pessoas restantes são vidas preciosas também! Você vai deixá-los?!! Hã?!!";
+	next;
+	cutin "fly_felrock2",2;
+	mes "[Capitão Ferlock]";
+	mes "Sim você está certo...";
+	mes "Dessa forma, deixarei que você cuide das consequências. Estou fora!!";
+	disablenpc instance_npcname("Capitão Ferlock#2air2");
+	next;
+	cutin "h_chaos03",2;
+	mes "[Caos]";
+	mes "Ei! Onde você vai! Argh!!";
+	mes "Eu vou te pegar. Vou te matar!!";
+	next;
+	cutin "h_guardian1",1;
+	mes "[Basara]";
+	mes "Não é hora de enfrentarmos esses gremlins.";
+	next;
+	mes "[Basara]";
+	mes "Eu posso sentir uma onda maior do mal.";
+	mes "Vamos deixar esses pequeninos para eles. Vamos lá!";
+	next;
+	mes "[Laksmi&Shiva]";
+	mes "Roger!! Sentinelas, forma de vôo!!!";
+	next;
+	cutin "h_iris01",2;
+	mes "[Iris]";
+	mes "Huh? Ei!!";
+	mes "Onde você acha que está indo depois de destruir o dirigível?";
+	next;
+	mes "[Iris]";
+	mes "Se eu te pegar na próxima vez, vou me certificar de que você morra!! Fique nervoso!! Você entendeu?! Esteja pronto, seus yokels~";
+	next;
+	cutin "h_guardian3",1;
+	mes "[Heroínas]";
+	mes "...yokels? (Rage)";
+	next;
+	mes "[Heroínas]";
+	mes "Aqueles que denegrem e condenam o caminho da justiça... Devemos impiedosamente entregar um julgamento justo, certo?";
+	next;
+	mes "[Heroínas]";
+	mes "Morra, vilões!! Shuriken Huuma de Metal!!";
+	next;
+	donpcevent instance_npcname("Gremlin#1air2") + "::OnExplosion1";
+	cutin "",255;
+	mes "- Bang! Babang! Bang!";
+	next;
+	cutin "h_iris01",2;
+	mes "[Iris]";
+	mes "Eeek!!";
+	next;
+	cutin "h_guardian1",1;
+	mes "[Heroínas]";
+	mes "Ahahahahaha!!";
+	mes "Vamos lá!!";
+	next;
+	cutin "h_chaos03",2;
+	mes "[Caos]";
+	mes "Iris!! Venha aqui!!";
+	mes "Vamos rapidamente encontrar Fenrir e Loki e sair daqui!!";
+	next;
+	cutin "h_chaos02",2;
+	mes "[Caos]";
+	mes "Você deve sair daqui agora!! Esta aeronave está em perigo !!";
+	close2;
+	if ('airship_status == 10){
+		'airship_status = 11;
+		enablenpc instance_npcname("warp5a#air2");
+		cutin "",255;
+		getexp 100000,65000;
+	}
+	end;
+}
+
+1@air2,243,58,3	duplicate(Iris#air1)	Captain Ferlock#2air2	4_M_REINDEER
+
+// Explosions
+1@air2,113,52,0	duplicate(Iris#air1)	fire1#air2	HIDDEN_WARP_NPC
+1@air2,115,68,0	duplicate(Iris#air1)	fire2#air2	HIDDEN_WARP_NPC
+1@air2,96,58,0	duplicate(Iris#air1)	fire3#air2	HIDDEN_WARP_NPC
+1@air2,90,75,0	duplicate(Iris#air1)	fire4#air2	HIDDEN_WARP_NPC
+1@air2,92,51,0	duplicate(Iris#air1)	fire5#air2	HIDDEN_WARP_NPC
+1@air2,77,42,0	duplicate(Iris#air1)	fire6#air2	HIDDEN_WARP_NPC
+1@air2,69,77,0	duplicate(Iris#air1)	fire7#air2	HIDDEN_WARP_NPC
+1@air2,50,49,0	duplicate(Iris#air1)	fire8#air2	HIDDEN_WARP_NPC
+1@air2,44,61,0	duplicate(Iris#air1)	fire9#air2	HIDDEN_WARP_NPC
+1@air2,31,53,0	duplicate(Iris#air1)	fire10#air2	HIDDEN_WARP_NPC
+1@air2,24,74,0	duplicate(Iris#air1)	fire11#air2	HIDDEN_WARP_NPC
+1@air2,43,45,0	duplicate(Iris#air1)	fire12#air2	HIDDEN_WARP_NPC
+1@air2,73,65,0	duplicate(Iris#air1)	fire13#air2	HIDDEN_WARP_NPC
+1@air2,53,72,0	duplicate(Iris#air1)	fire14#air2	HIDDEN_WARP_NPC
+1@air2,82,62,0	duplicate(Iris#air1)	fire15#air2	HIDDEN_WARP_NPC
+1@air2,234,70,0	duplicate(Iris#air1)	fire21#air2	HIDDEN_WARP_NPC
+1@air2,247,64,0	duplicate(Iris#air1)	fire22#air2	HIDDEN_WARP_NPC
+1@air2,230,33,0	duplicate(Iris#air1)	fire23#air2	HIDDEN_WARP_NPC
+1@air2,277,39,0	duplicate(Iris#air1)	fire25#air2	HIDDEN_WARP_NPC
+1@air2,223,50,0	duplicate(Iris#air1)	fire26#air2	HIDDEN_WARP_NPC
+1@air2,238,70,0	duplicate(Iris#air1)	fire29#air2	HIDDEN_WARP_NPC
+1@air2,238,32,0	duplicate(Iris#air1)	fire30#air2	HIDDEN_WARP_NPC
+
+1@air2,0,0,0	script	firecontrol#air2	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("firecontrol#air2");
+	for ( .@i = 1; .@i <= 15; .@i++ )
+		enablenpc instance_npcname("fire" + .@i + "#air2");
+	initnpctimer;
+	end;
+OnTimer1000:
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire1#air2");
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire8#air2");
+	end;
+OnTimer1400:
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire2#air2");
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire9#air2");
+	end;
+OnTimer1800:
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire3#air2");
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire10#air2");
+	end;
+OnTimer2200:
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire4#air2");
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire11#air2");
+	end;
+OnTimer2600:
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire5#air2");
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire12#air2");
+	end;
+OnTimer3000:
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire6#air2");
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire13#air2");
+	end;
+OnTimer3400:
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire7#air2");
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire14#air2");
+	end;
+OnTimer3800:
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire15#air2");
+	initnpctimer;
+	end;
+}
+
+1@air2,0,0,0	script	firecontrol2#air2	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("firecontrol2#air2");
+	enablenpc instance_npcname("fire21#air2");
+	enablenpc instance_npcname("fire22#air2");
+	enablenpc instance_npcname("fire23#air2");
+	enablenpc instance_npcname("fire25#air2");
+	enablenpc instance_npcname("fire26#air2");
+	enablenpc instance_npcname("fire29#air2");
+	enablenpc instance_npcname("fire30#air2");
+	initnpctimer;
+	end;
+OnTimer1000:
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire21#air2");
+	end;
+OnTimer1400:
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire22#air2");
+	end;
+OnTimer1800:
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire23#air2");
+	end;
+OnTimer2200:
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire25#air2");
+	end;
+OnTimer2600:
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire26#air2");
+	end;
+OnTimer3000:
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire29#air2");
+	end;
+OnTimer3400:
+	specialeffect EF_BLASTMINEBOMB,AREA, instance_npcname("fire30#air2");
+	initnpctimer;
+	end;
+
+OnInstanceInit:
+	'airship_status = 0;
+
+	'map_air1$ = instance_mapname("1@air1");
+	'map_air2$ = instance_mapname("1@air2");
+
+	// Warps
+	disablenpc instance_npcname("warp1#air1");
+	disablenpc instance_npcname("warp2a#air1");
+	disablenpc instance_npcname("warp2b#air1");
+	disablenpc instance_npcname("warp3a#air1");
+	disablenpc instance_npcname("warp3b#air1");
+	disablenpc instance_npcname("warp4a#air2");
+	disablenpc instance_npcname("warp5a#air2");
+
+	// Entrance
+	disablenpc instance_npcname("Acidus#1air1");
+	disablenpc instance_npcname("Acidus#2air1");
+	disablenpc instance_npcname("Rotar Zairo#1air1");
+	disablenpc instance_npcname("Rotar Zairo#2air1");
+	disablenpc instance_npcname("Wywern#air1");
+	for ( .@i = 1; .@i <= 8; .@i++ )
+		disablenpc instance_npcname("Gremlin#" + .@i + "air1");
+
+	// Step 1
+	disablenpc instance_npcname("#airshipputmob1");
+	disablenpc instance_npcname("Cavaleiro Viajando#air1");
+	disablenpc instance_npcname("Bêbado Desmaiado#air1");
+	disablenpc instance_npcname("Homem Rico#a");
+	disablenpc instance_npcname("Bardo de Equitação#air1");
+	disablenpc instance_npcname("Gerente da Cafeteria#air1");
+	disablenpc instance_npcname("Espírito de Jogo#air1");
+
+	// Step 2
+	disablenpc instance_npcname("#airshipputmob2");
+	disablenpc instance_npcname("Iris#2air1");
+	disablenpc instance_npcname("Caos#2air1");
+	disablenpc instance_npcname("Gremlin#2aair1");
+	disablenpc instance_npcname("Tripulação#1air1");
+	disablenpc instance_npcname("Tripulação#2air1");
+	disablenpc instance_npcname("Escolta do Rei#1air1");
+	disablenpc instance_npcname("Escolta do Rei#2air1");
+	disablenpc instance_npcname("Turista#1air1");
+	disablenpc instance_npcname("Turista#2air1");
+	disablenpc instance_npcname("Rei#1air1");
+
+	// Step 3 - 1@air2
+	disablenpc instance_npcname("#airshipputmob3");
+	disablenpc instance_npcname("firecontrol#air2");
+	disablenpc instance_npcname("Bêbado Desmaiado#air2");
+	disablenpc instance_npcname("Homem Rico#b");
+	disablenpc instance_npcname("Cavaleiro Viajando#air2");
+	disablenpc instance_npcname("Bardo de Equitação#air2");
+	disablenpc instance_npcname("Espírito de Jogo#air2");
+	disablenpc instance_npcname("Gerente da Cafeteria#air2");
+
+	// Step 4
+	disablenpc instance_npcname("calla#air2");
+	disablenpc instance_npcname("firecontrol2#air2");
+	disablenpc instance_npcname("Fenrir#air2");
+	disablenpc instance_npcname("Loki#air2");
+	disablenpc instance_npcname("Iris#air2");
+	disablenpc instance_npcname("Wywern#air2");
+	disablenpc instance_npcname("Wywern#2air2");
+	disablenpc instance_npcname("Wywern#3air2");
+	disablenpc instance_npcname("Acidus#1air2");
+	disablenpc instance_npcname("Acidus#2air2");
+	disablenpc instance_npcname("Rotar Zairo#1air2");
+	disablenpc instance_npcname("Rotar Zairo#2air2");
+	disablenpc instance_npcname("Capitão Ferlock#air2");
+	for ( .@i = 1; .@i <= 3; .@i++ )
+		hideonnpc instance_npcname("Gremlin#" + .@i + "air2");
+	for ( .@i = 4; .@i <= 8; .@i++ )
+		disablenpc instance_npcname("Gremlin#" + .@i + "air2");
+
+	// Step 5
+	disablenpc instance_npcname("callb#air2");
+	disablenpc instance_npcname("Iris#2air2");
+
+	// Final
+	disablenpc instance_npcname("Caos#air2");
+	disablenpc instance_npcname("Capitão Ferlock#2air2");
+
+	// Blast
+	for ( .@i = 1; .@i <= 15; .@i++ )
+		disablenpc instance_npcname("fire" + .@i + "#air2");
+	disablenpc instance_npcname("fire21#air2");
+	disablenpc instance_npcname("fire22#air2");
+	disablenpc instance_npcname("fire23#air2");
+	disablenpc instance_npcname("fire25#air2");
+	disablenpc instance_npcname("fire26#air2");
+	disablenpc instance_npcname("fire29#air2");
+	disablenpc instance_npcname("fire30#air2");
+	end;
+}
