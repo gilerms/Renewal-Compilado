@@ -283,15 +283,15 @@ static void display_title(void) {
 
 	ShowMessage("\n");
 	ShowMessage("" CL_PASS "     " CL_BOLD "                                                           	  	 " CL_PASS"" CL_CLL "" CL_NORMAL "\n");
-	ShowMessage("" CL_PASS "       " CL_BT_WHITE "      	 Equipe LivedBR Apresenta              	   						" CL_PASS "" CL_CLL "" CL_NORMAL "\n");
-	ShowMessage("" CL_PASS "     " CL_BOLD "    	   __    _                ______  ____      						" CL_PASS "" CL_CLL "" CL_NORMAL "\n");
-	ShowMessage("" CL_PASS "     " CL_BOLD "   		  / /   (_)   _____  ____/ / __ )/ __ \\    				 " CL_PASS "" CL_CLL "" CL_NORMAL "\n");
-	ShowMessage("" CL_PASS "     " CL_BOLD "   		 / /   / / | / / _ \\/ __  / __  / /_/ /        				" CL_PASS "" CL_CLL "" CL_NORMAL "\n");
-	ShowMessage("" CL_PASS "     " CL_BOLD "   	    / /___/ /| |/ /  __/ /_/ / /_/ / _, _/     								 " CL_PASS "" CL_CLL "" CL_NORMAL "\n");
-	ShowMessage("" CL_PASS "     " CL_BOLD "   	   /_____/_/ |___/\\___/\\__,_/_____/_/ |_|          						" CL_PASS "" CL_CLL "" CL_NORMAL "\n");
-	ShowMessage("" CL_PASS "     " CL_BOLD "        																" CL_PASS "" CL_CLL "" CL_NORMAL "\n");
-	ShowMessage("" CL_PASS "       " CL_GREEN "             Forum LivedBR em andamento.                  					 " CL_PASS "" CL_CLL "" CL_NORMAL "\n");
-	ShowMessage("" CL_PASS "     " CL_BOLD "                                                              			" CL_PASS "" CL_CLL "" CL_NORMAL "\n");
+	ShowMessage("" CL_PASS "       " CL_BT_WHITE "      	 Equipe LivedBR Apresenta              	  		" CL_PASS "" CL_CLL "" CL_NORMAL "\n");
+	ShowMessage("" CL_PASS "     " CL_BOLD "       __    _                 ______  ____      " CL_PASS "" CL_CLL "" CL_NORMAL "\n");
+	ShowMessage("" CL_PASS "     " CL_BOLD "      / /   (_)   _____  _____/ / __ )/ __ \\     " CL_PASS "" CL_CLL "" CL_NORMAL "\n");
+	ShowMessage("" CL_PASS "     " CL_BOLD "     / /   / / | / / _ \\/  _   / __  / /_/ /        " CL_PASS "" CL_CLL "" CL_NORMAL "\n");
+	ShowMessage("" CL_PASS "     " CL_BOLD "    / /___/ /| |/ /  __/  /_/ / /_/ / _,_,/      " CL_PASS "" CL_CLL "" CL_NORMAL "\n");
+	ShowMessage("" CL_PASS "     " CL_BOLD "   /_____/_/ |___/\\___/\\_,___/_____/_/ |_|          " CL_PASS "" CL_CLL "" CL_NORMAL "\n");
+	ShowMessage("" CL_PASS "     " CL_BOLD "        											" CL_PASS "" CL_CLL "" CL_NORMAL "\n");
+	ShowMessage("" CL_PASS "       " CL_WHITE "       Forum LivedBR em andamento.                	 " CL_PASS "" CL_CLL "" CL_NORMAL "\n");
+	ShowMessage("" CL_PASS "     " CL_BOLD "                                                              	" CL_PASS "" CL_CLL "" CL_NORMAL "\n");
 
 	if( svn[0] != UNKNOWN_VERSION )
 		ShowInfo("SVN Revision: '" CL_WHITE "%s" CL_RESET "'\n", svn);
