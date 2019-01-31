@@ -26,28 +26,30 @@
 
 // Inside Comodo
 //============================================================
-cmd_in02,73,81,4	script	Martine#cmd	48,{
-	mes "[Martine]";
-	mes "Gambling...? The games";
-	mes "provided here in the Comodo";
-	mes "Casino are a higher form of";
-	mes "entertainment than gambling.";
-	mes "Do you know what I mean?";
+cmd_in02,73,81,4	script	Martim#cmd	1_M_02,{
+	mes "[Martim]";
+	mes "Jogatina?! Não! Não é isso!";
+	mes "Não julgue o Cassino de Comodo como outro qualquer.";
+	mes "Aqui existem os melhores jogos do mundo.";
+	mes "São jogos de alto nível,";
+	mes "e não simples jogos de azar";
+	mes "Você percebe?!";
 	next;
-	mes "[Martine]";
-	mes "Granted, I did lose";
-	mes "all of my zeny playing";
-	mes "in this Casino, but I have";
-	mes "no regrets. I'll simply earn";
-	mes "more money, then blow it all";
-	mes "again. Or I just might win big!";
+	mes "[Martim]";
+	mes "Por que você está ";
+	mes "me olhando desse jeito?!";
+	mes "Não me olhe assim!";
+	mes "Eu não me importo com o que você acha...";
+	mes "Eu perdi todo o meu dinheiro nesse cassino,";
+	mes "mas eu não me importo!";
 	next;
-	mes "[Martine]";
-	mes "Bwahahahaahah~!";
-	mes "Yes, I can only lose so";
-	mes "many times until I hit the";
-	mes "jackpot! You see, you see?";
-	mes "I'm playing the freakin' odds.";
+	mes "[Martim]";
+	mes "por hoje é só!";
+	mes "Eu preciso ir as cavernas de Comodo...";
+	mes "Matar alguns monstros e conseguir alguns zenys.";
+	mes "Para voltar e continuar...";
+	mes "a jogar!!";
+	mes "HaHaHa....";
 	close;
 }
 
@@ -69,12 +71,12 @@ cmd_in02,48,55,4	script	Scoursege#cmd	51,{
 
 cmd_in02,64,43,4	script	Roberto#cmd	709,{
 	mes "[Roberto]";
-	mes "Heh heh heh...";
-	mes "Whaaaat a gullible";
-	mes "guy. I took his money";
-	mes "so easily! I mean, I didn't";
-	mes "even come up with that great";
-	mes "of a lie, and he gave it to me!";
+	mes "Outro otário...";
+	mes "Consegui enrolar mais um!..";
+	mes "HaHaHaHaHa......";
+	mes "...hmm... Quem é você?";
+	mes "Sai! Sai! Vai embora!";
+	mes "Nunca viu ninguém contando dinheiro antes?";
 	close;
 }
 

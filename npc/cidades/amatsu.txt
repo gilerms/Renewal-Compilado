@@ -155,7 +155,7 @@ amatsu,194,79,5	script	Capitão#ama2	4_M_SEAMAN,{
 	close;
 }
 
-// Npc Genéricos de Amatsu
+// Generic Amatsu NPCs
 //============================================================
 amatsu,230,160,3	script	Donzela#ama	757,{
 	mes "[Yuuko]";
@@ -213,8 +213,8 @@ amatsu,179,107,4	script	John#ama	86,{
 	mes "[John]";
 	mes "Sabe ali? Do outro lado da rua?";
 	mes "Desde que o Mestre do Sushi";
-	mes "abriu sua loja, estou arruinado!";
-	mes "Now, my only customers are flies.";
+	mes "abriu sua loja, estou arruinado meus negócios!";
+	mes "Agora, meus únicos clientes são as moscas.";
 	next;
 	mes "[John]";
 	mes "Eu vim em busca de um sonho";
@@ -238,7 +238,7 @@ amatsu,205,163,3	script	Mimi#ama	759,{
 	close;
 }
 
-amatsu,185,115,3	script	Drunken Man#ama	765,{
+amatsu,185,115,3	script	Bêbado#ama	765,{
 	mes "[Kosake]";
 	mes "*hic*...Minha mulher";
   	mes "é uma fera...*hic*...";
@@ -442,7 +442,7 @@ amatsu,283,203,1	script	Bonubonu#ama2	111,{
 	close;
 }
 
-amatsu,274,178,7	script	Veterinarian#ama	735,{
+amatsu,274,178,7	script	Veterinaria#ama	735,{
 	set jap_tree,4;
 	mes "[Sakura Seiichi]";
 	mes "Ah... Nao, eu nao sou um louco.";

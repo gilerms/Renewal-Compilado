@@ -63,7 +63,7 @@ aldebaran,64,104,4	script	Homem Forjando#alde	1_M_JOBTESTER,{
 	mes "[Quatro]";
 	mes "Você ouviu falar que aquele Ferreiro famoso se mudou de Geffen para cá?";
 	next;
-	if (select("Ferreiro Famoso?:Encerrar conversa.") == 1) {
+	if (select("Ferreiro Famoso?:Finalizar conversa.") == 1) {
 		mes "[Quatro]";
 		mes "Pelo o que eu ouvi, ele é um daqueles Ferreiros que consegue refinar armas e armaduras. Quando uma arma é refinada o seu ataque é aumentado.";
 		next;
@@ -95,7 +95,7 @@ aldebaran,49,93,4	script	Jovem#alde	4_M_01,{
 
 aldebaran,81,61,4	script	Catadora de Conchas#ald	4W_F_01,{
 	mes "[Joanne]";
-	mes "Eu gosto de colecionar conchas do mar. É muito relaxante e divertido~";
+	mes "Eu gosto de colecionar conchas do mar. É muito relaxante e divertido.";
 	next;
 	if (select("Catar Conchas?:Finalizar Conversa.") == 1) {
 		mes "[Joanne]";
@@ -127,11 +127,11 @@ aldebaran,46,129,4	script	Cara dos Canais#alde	4W_M_01,{
 	mes "[Panama]";
 	mes "Al De Baran é conhecida mundialmente como a Cidade dos Canais. Os canais realmente dão um toque sofisticado e romântico a nossa cidade.";
 	next;
-	switch(select("Sobre os Canais:Finalizar Conversa")) {
+	switch(select("Sobre os Canais:Finalizar Conversa.")) {
 	case 1:
 		mes "[Panama]";
 		mes "Bem, um canal é um lugar criado para a água passar normalmente usado para";
-		mes "embarcações, ou irrigações.";
+		mes "embarcações ou irrigações.";
 		next;
 		mes "[Panama]";
 		mes "Mas, os canais daqui são apenas para ver. Se nós precisamos transportar alguma coisa, nós apenas usaríamos o serviço de teletransporte da Corporação Kafra!";
@@ -850,7 +850,7 @@ aldeba_in,83,245,4	script	Serviço Kafra#2alde	4_F_KAFRA2,{
 		mes "Mas, na aba Equip, cada equipamento ocupa seu próprio Slot. Eu acho que é porque cada equipamento pode ser aprimorado com cartas ou refinamento.";
 		next;
 		mes "[Kafra Blossom]";
-		mes "There's a total of 300 Slots for all three item categories in the Kafra Storage, so it might be helpful to remember that.";
+		mes "Exite um total de 300 Slots para todas as categorias de itens no Armazém Kafra, é bom se lembrar disso.";
 		next;
 		break;
 	case 2:
@@ -864,7 +864,7 @@ aldeba_in,83,245,4	script	Serviço Kafra#2alde	4_F_KAFRA2,{
 		mes "Também, as Funcionárias Kafras sozinhas não podem teletransportar os clientes. Nós apenas recebemos e processamos seu pedido de Teletransporte.";
 		next;
 		mes "[Kafra Blossom]";
-		mes "Behind the scenes, skilled professionals and technicians are working 24 hours a day to ensure that you teleport quickly and safely to your destination.";
+		mes "Atrás dos panos, profissionais habilidosos estão trabalhando 24 horas por dia para assegurar que você chegue rápido e seguro no seu destido.";
 		next;
 		break;
 	}
@@ -921,8 +921,8 @@ aldeba_in,24,245,4	script	Kafra Jasmine#alde	115,{
 		mes "Ele era um bom homem. Ele...Grr! Não consigo lembrar!";
 		next;
 		mes "[Kafra Jasmine]";
-		mes "Oh no...!";
-		mes "This can't be the right story! Five million, eight hundred years?! It's impossible!";
+		mes "Ah não...!";
+		mes "Essa não pode ser a história certa! cinco milhões e oitocentos...?! É impossivel!";
 		break;
 	case 2:
 		mes "[Kafra Jasmine]";
@@ -933,12 +933,12 @@ aldeba_in,24,245,4	script	Kafra Jasmine#alde	115,{
 		mes "Eu era uma membra das Tropas Kafra antes de entrar no Time do Serviço Kafra. Minha especialidade era ^990000Impacto Explosivo^000000, então se você sabe o que é bom para você, não mexa comigo.";
 		next;
 		mes "[Kafra Jasmine]";
-		mes "I'm trying my best to live as quietly and as femininely as I can, so don't make me break your knuckles! You got it?!";
+		mes "Eu tento ao máximo viver tão feminina e quieta que eu puder, então não me faça quebrar seus ossos! Entendeu?!";
 		break;
 	case 3:
 		mes "[Kafra Jasmine]";
-		mes "Hooray!";
-		mes "That's great news to hear. We're always working hard to make sure that our customers are satisfied with the services that we provide.";
+		mes "Oraa!";
+		mes "Boas notícias para ouvir. Nós sempre estamos trabalhando duro para satisfazer nossos clientes com os serviços que nós oferecemos.";
 		break;
 	}
 	close2;
@@ -985,7 +985,7 @@ aldeba_in,142,238,4	script	Serviço Kafra#3alde	4_F_KAFRA4,{
 			mes "Então, esse Aprendiz sem arma e sem armadura vai lutar contra monstros até conseguir zeny suficiente para abrir o Armazém de novo!";
 			next;
 			mes "[Kafra Roxie]";
-			mes "It's a silly mistake, to be sure, but we here at Kafra Corporation value human life, and decided on the Basic Skill Level 6 Requirement to prevent this kind of mishap.";
+			mes "É um pequeno erro, na verdade, mas nós aqui da Corporação Kafra valorizamos a vida humana, então decidimos que nível 6 em Habilidades Básicas é um requerimento para prevenir esse tipo de problema.";
 			break;
 		case 2:
 			mes "[Kafra Roxie]";
@@ -1001,7 +1001,7 @@ aldeba_in,142,238,4	script	Serviço Kafra#3alde	4_F_KAFRA4,{
 			mes "Para os Super Aprendizes, bem, não devemos alugar carrinhos para eles já que a Sociedade dos Super Aprendizes não tem contrato conosco.";
 			next;
 			mes "[Kafra Roxie]";
-			mes "If a Kafra Employee rented a Cart to a Super Novice, she'd probably get in big trouble with Leilah...";
+			mes "Se uma Funcionária da Kafra alugar um carrinho a um Super Aprendiz, ela provavelmente se meteria em problemas com Leilah....";
 			break;
 		case 3:
 			mes "[Kafra Roxie]";
@@ -1051,110 +1051,103 @@ aldeba_in,91,244,4	script	Serviço Kafra#4alde	4_F_KAFRA6,{
 // Kafra Special Reserve Point NPCs
 //============================================================
 // Special Reserve ----------------------------------------------
-aldeba_in,79,161,7	script	Kafra Employee#reserve1	4_F_KAFRA3,{
+aldeba_in,79,161,7	script	Funcionária da  Kafra#reserve1	4_F_KAFRA3,{
 	if (checkweight(1201,1) == 0) {
-		mes "^3355FFWait a minute! Right now,";
-		mes "you're carrying too many items";
-		mes "in your inventory. Please come";
-		mes "back after storing some of";
-		mes "your things in Kafra Storage.";
+		mes "^3355FFEspere um minuto! Parece que,";
+		mes "você está carregando muitos itens";
+		mes "no seu inventário. Por favor, venha";
+		mes "depois de armazenar alguns";
+		mes "de seus itens no Armazém.";
 		close;
 	}
-	mes "[Kafra Employee]";
-	mes "Welcome, "+ strcharinfo(0) +"~";
-	mes "Here, you can exchange";
-	mes "the Special Reserve Points";
-	mes "you've earned by using the";
-	mes "Kafra Services for some";
-	mes "neat and useful prizes~";
+	mes "[Funcionária da  Kafra]";
+	mes "Bem vind"+(Sex?"o":"a")+", "+ strcharinfo(0) +"~";
+	mes "Aqui, você pode trocar";
+	mes "os Pontos Especiais de Reserva que você ganhou";
+	mes "por prêmios úteis, utilizando os Serviços Kafra.";
 	next;
-	mes "[Kafra Employee]";
-	mes "Please remember that each window has a different amount of special reserve points you can Use";
-	mes "You can use ^7D0781from 100p to 3000p^000000 in here.";
+	mes "[Funcionária da  Kafra]";
+	mes "Por favor, lembre-se que cada janela tem uma quantidade diferente de pontos de reserva especiais que você pode usar";
+	mes "Você pode usar ^7D0781de 100p a 3000p^000000 aqui.";
 	next;
-	mes "[Kafra Employee]";
+	mes "[Funcionária da  Kafra]";
 	if ((MaxWeight - Weight) < 11000) {
-		mes "Um, but I don't think";
-		mes "you're able to carry";
-		mes "very much right now.";
-		mes "It looks like you have";
-		mes "too much stuff inside";
-		mes "your inventory.";
+		mes "Hum, eu acho que";
+		mes "você não é capaz de carregar";
+		mes "tanta coisa neste momento.";
+		mes "Parece que você está com";
+		mes "muita itens no seu inventário.";
 		next;
-		mes "[Kafra Employee]";
-		mes "Please put some of";
-		mes "your things into Kafra";
-		mes "Storage. To use this";
-		mes "service, we ask that you";
-		mes "have about ^FF00001,100^000000 free units";
-		mes "of weight in your inventory.";
+		mes "[Funcionária da  Kafra]";
+		mes "Por favor guarde o que não irá";
+		mes "utilizar no armazenamento da Kafra.";
+		mes "Você tem aproximadamente ^FF00001,100^000000 espaços livres";
+		mes "em seu inventário.";
 		close;
 	}
 	.@total = RESRVPTS;
-	mes "Let's see...";
+	mes "Vamos checar...";
 	mes strcharinfo(0) +"...";
-	mes "Ah, you have a total of";
-	mes .@total +" Special Reserve Points.";
-	mes "Now what you would like";
-	mes "to exchange them for?";
+	mes "Ah, você tem um total de";
+	mes .@total +" Pontos de Reserva Especiais.";
+	mes "Agora o que você gostaria de";
+	mes "trocá-los por?";
 	next;
 	setarray .@select_price[0], 516, 100,7, 200,15, 300,25, 400,35, 500,50, 600,60, 700,75, 800,85, 900,100, 1000;// <item_id>,<points required>,<item quantity>
-	.@s = select( "100 = Potato 7 ea", "200 = Potato 15 ea", "300 = Potato 25 ea", "400 = Potato 35 ea", "500 = Potato 50 ea", "600 = Potato 60 ea", "700 = Potato 75 ea",
-		"800 = Potato 85 ea", "900 = Potato 100 ea", "1000 = 1st Lottery Chance!", "Next Articles", "Cancel" );
+	.@s = select( "100 = Batatas 7 ea", "200 = Batatas 15 ea", "300 = Batatas 25 ea", "400 = Batatas 35 ea", "500 = Batatas 50 ea", "600 = Batatas 60 ea", "700 = Batatas 75 ea",
+		"800 = Batatas 85 ea", "900 = Batatas 100 ea", "1000 = Primeira Chance da Loteria!", "Artigos Seguintes.", "Cancelar." );
 	if (.@s == 11) {
 		setarray .@select_price[0], 501, 1100,7, 1300,15, 1500,25, 1700,35, 1900,50, 2100,60, 2300,75, 2500,85, 2800,100, 3000;
-		.@s = select( "1100 = Red Potion 7 ea:1300 = Red Potion 15 ea:1500 = Red Potion 25 ea:1700 = Red Potion 35 ea:1900 = Red Potion 50 ea:2100 = Red Potion 60 ea:" +
-			"2300 = Red Potion 75 ea:2500 = Red Potion 85 ea:2800 = Red Potion 100 ea:3000 = 2nd Lotery Chance!::Cancel" );
+		.@s = select( "1100 = Poções Vermelhas 7 ea:1300 = Poções Vermelhas 15 ea:1500 = Poções Vermelhas 25 ea:1700 = Poções Vermelhas 35 ea:1900 = Poções Vermelhas 50 ea:2100 = Poções Vermelhas 60 ea:" +
+			"2300 = Poções Vermelhas 75 ea:2500 = Poções Vermelhas 85 ea:2800 = Poções Vermelhas 100 ea:3000 = Segunda Cahnce da Loteria!::Cancelar." );
 		.@choose_sub_select = 1;
 	}
 	if (.@s != 12) {// cancel
-		mes "[Kafra Employee]";
+		mes "[Funcionária da  Kafra]";
 		.@index_points = .@s * 2 - 1;
 		.@index_quantity = .@s * 2;
 		if (.@total < .@select_price[.@index_points]) {
 			.@points = .@select_price[.@index_points] - .@total;
-			mes "I'm sorry, but you don't";
-			mes "enough Special Reserve";
-			mes "Points to exchange for this";
-			mes "reward. You need at least";
-			mes "^0000FF"+ .@points +"^000000 more points.";
+			mes "Sinto muito, mas você não";
+			mes " possui Pontos suficientes";
+			mes "para trocar por essa";
+			mes "recompensa. Você precisa de pelo menos";
+			mes "^0000FF"+ .@points +"^000000 ou mais.";
 			close;
 		}
 		.@total = .@total - .@select_price[.@index_points];
-		mes "After receiving this";
-		mes "reward, you'll have";
-		mes "^AC0000"+ .@total +"^000000 Special Reserve";
-		mes "Points left. Would you";
-		mes "like to redeem your";
-		mes "points for this reward?";
+		mes "Depois de receber essa";
+		mes "recompensa, você terá";
+		mes "^AC0000"+ .@total +"^000000 Pontos de Reserva.";
+		mes "Você gostaria de resgatar mais alguma coisa?";
 		next;
-		if (select( "Exchange.", "Cancel" ) == 1) {
+		if (select( "Trocar.", "Cancelar." ) == 1) {
 			RESRVPTS = .@total;
 			if (.@s < 10)
 				getitem .@select_price[0], .@select_price[.@index_quantity];
 			else {
-				mes "[Kafra Employee]";
+				mes "[Funcionária da  Kafra]";
 				if (.@choose_sub_select == 0) {
-					mes "^0000FF1st Lottery Chance!!^000000";
-					mes "It's time to test out";
-					mes "your luck. Get ready!";
+					mes "^0000FFPrimeira Chance!!^000000";
+					mes "É hora de testar";
+					mes "sua sorte. Prepare-se!";
 				}
 				else {
-					mes "Uh oh...";
-					mes "It's that time again~";
-					mes "It's Kafra Lottery Time!";
-					mes "Let's see how good your";
-					mes "luck is today. Ready?";
+					mes "Uh oh ...";
+					mes "É aquela vez novamente~";
+					mes "É o tempo da loteria Kafra!";
+					mes "Vamos ver como é bom o seu";
+					mes "a sorte é hoje. Pronto?";
 				}
 				next;
-				mes "[Kafra Employee]";
+				mes "[Funcionária da  Kafra]";
 				mes "How many times";
 				mes "would you like to spin";
 				mes "the lottery machine?";
 				mes "You can spin it 1 to 5 times.";
 				next;
 				while( input(.@input,1,5) != 0 ) {
-					mes "[Kafra Employee]";
+					mes "[Funcionária da  Kafra]";
 					mes "Excuse me...?";
 					mes "Please choose";
 					mes "a number from 1 to 5.";
@@ -1178,14 +1171,14 @@ aldeba_in,79,161,7	script	Kafra Employee#reserve1	4_F_KAFRA3,{
 					next;
 					.@random_while++;
 				}
-				mes "[Kafra Employee]";
+				mes "[Funcionária da  Kafra]";
 				if (.@choose_sub_select == 0) {
 					mes "Ooh, something";
 					mes "came out! Let's see";
 					mes "what you've won~";
 					mes "Oh goodness, it's...!";
 					next;
-					mes "[Kafra Employee]";
+					mes "[Funcionária da  Kafra]";
 					if (.@choose_prize <= 10) {
 						getitem 516,100;// Sweet_Potato
 						mes "Hm? F-fourth prize?";
@@ -1230,7 +1223,7 @@ aldeba_in,79,161,7	script	Kafra Employee#reserve1	4_F_KAFRA3,{
 					mes "out! What could it be?";
 					mes "Ooh, you just won...";
 					next;
-					mes "[Kafra Employee]";
+					mes "[Funcionária da  Kafra]";
 					if (.@choose_prize <= 10) {
 						getitem 501,100;// Red_Potion
 						mes "F-fourth prize...?!";
@@ -1272,7 +1265,7 @@ aldeba_in,79,161,7	script	Kafra Employee#reserve1	4_F_KAFRA3,{
 			next;
 		}
 	}
-	mes "[Kafra Employee]";
+	mes "[Funcionária da  Kafra]";
 	mes "Alright then. Please";
 	mes "use our services to";
 	mes "collect more and more";
@@ -1282,25 +1275,25 @@ aldeba_in,79,161,7	script	Kafra Employee#reserve1	4_F_KAFRA3,{
 	close;
 }
 
-aldeba_in,88,161,3	script	Kafra Employee#reserve2	4_F_KAFRA3,{
-	mes "[Kafra Employee]";
+aldeba_in,88,161,3	script	Funcionária da  Kafra#reserve2	4_F_KAFRA3,{
+	mes "[Funcionária da  Kafra]";
 	mes "Welcome~ "+ strcharinfo(0) +".";
 	mes "Currently, we, Kafra Center is having a special event for our customers.";
 	next;
-	mes "[Kafra Employee]";
+	mes "[Funcionária da  Kafra]";
 	mes "You can get free gifts by using special reserve points with ^FF0000Special Kafra ^529DFFGift Event!^000000";
 	mes "Kafra Corporation added new gifts in this event.";
 	next;
-	mes "[Kafra Employee]";
+	mes "[Funcionária da  Kafra]";
 	mes "Do you want to use your points?";
 	next;
 	if (select( "Yes, I do","Maybe in next time" ) == 1) {
-		mes "[Kafra Employee]";
+		mes "[Funcionária da  Kafra]";
 		if ((MaxWeight - Weight) < 11000) {
 			mes "....Oh dear... What are you carrying so many things...?";
 			mes "I don't think you can keep the received items~";
 			next;
-			mes "[Kafra Employee]";
+			mes "[Funcionária da  Kafra]";
 			mes "I'm sorry~ but~";
 			mes "Please, visit Kafra warehouse and store your items until you have free space of ^0000FF1100^000000 and come back.";
 			mes "I apologize for inconvenience~";
@@ -1312,7 +1305,7 @@ aldeba_in,88,161,3	script	Kafra Employee#reserve2	4_F_KAFRA3,{
 		setarray .@points[1],5000,7000,10000;
 		.@s = select( "5000p = 1st Lottery Chance!", "7000p = 2nd Lottery Chance!", "10000p = 3rd Lottery Chance!", "Cancel" );
 		if (.@s != 4) {
-			mes "[Kafra Employee]";
+			mes "[Funcionária da  Kafra]";
 			if (RESRVPTS < .@points[.@s]) {
 				mes "I'm sorry~ dear~";
 				mes "You can't choose the selected chance because you do not have enough special reserve points.";
@@ -1322,10 +1315,10 @@ aldeba_in,88,161,3	script	Kafra Employee#reserve2	4_F_KAFRA3,{
 			RESRVPTS = RESRVPTS - .@points[.@s];
 			mes "^0000FF"+ F_GetNumSuffix(.@s) +" Lottery Chance!!^000000";
 			next;
-			mes "[Kafra Employee]";
+			mes "[Funcionária da  Kafra]";
 			mes "It's time to try your luck.";
 			next;
-			mes "[Kafra Employee]";
+			mes "[Funcionária da  Kafra]";
 			mes "Let's see how lucky you are. Now! Get ready!";
 			next;
 			.@sound_word = rand(1,3);
@@ -1336,14 +1329,14 @@ aldeba_in,88,161,3	script	Kafra Employee#reserve2	4_F_KAFRA3,{
 			else if (.@sound_word == 3)
 				mes "'Boing.. Boing.. Clink!'";
 			next;
-			mes "[Kafra Employee]";
+			mes "[Funcionária da  Kafra]";
 			mes "Something has come out~ Let's see what you got~";
 			mes "G~ U~ E~ S~ S~ W~ H~ A~ T~";
 			next;
-			mes "[Kafra Employee]";
+			mes "[Funcionária da  Kafra]";
 			mes "^FF0000Oh, my goodness! It's!!^000000";
 			next;
-			mes "[Kafra Employee]";
+			mes "[Funcionária da  Kafra]";
 			.@choose_prize = rand(1,20);
 			if (.@s == 1) {
 				if (.@choose_prize < 15) {
@@ -1352,7 +1345,7 @@ aldeba_in,88,161,3	script	Kafra Employee#reserve2	4_F_KAFRA3,{
 					mes "You got the 4th prize!!";
 					mes "The prize is ^00FF00150 Red Potions~^000000";
 					next;
-					mes "[Kafra Employee]";
+					mes "[Funcionária da  Kafra]";
 					mes "Whoa~ 150 potions! It is enough to share with your friends~";
 				}
 				else if (.@choose_prize < 18) {
@@ -1361,7 +1354,7 @@ aldeba_in,88,161,3	script	Kafra Employee#reserve2	4_F_KAFRA3,{
 					mes "The 3rd prize!";
 					mes "The prize is ^00FF0015 Concentration Potion~^000000";
 					next;
-					mes "[Kafra Employee]";
+					mes "[Funcionária da  Kafra]";
 					mes "We always use this when we need to concentrate on something.";
 					mes "However, overdose is not good for your body~";
 				}
@@ -1371,7 +1364,7 @@ aldeba_in,88,161,3	script	Kafra Employee#reserve2	4_F_KAFRA3,{
 					mes "The 3rd prize~~";
 					mes "The prize is ^00FF003 Blue Potions~^000000";
 					next;
-					mes "[Kafra Employee]";
+					mes "[Funcionária da  Kafra]";
 					mes "Try these when your spiritual power is low~";
 				}
 				else if (.@choose_prize == 20) {
@@ -1380,7 +1373,7 @@ aldeba_in,88,161,3	script	Kafra Employee#reserve2	4_F_KAFRA3,{
 					mes "Congratulations~~ You got the 1st prize~";
 					mes "The prize is ^00FF001 Yggdrasil Seed~^000000";
 					next;
-					mes "[Kafra Employee]";
+					mes "[Funcionária da  Kafra]";
 					mes "I guess you spent entire luck for this lottery chance~";
 				}
 			}
@@ -1391,7 +1384,7 @@ aldeba_in,88,161,3	script	Kafra Employee#reserve2	4_F_KAFRA3,{
 					mes "You got the 4th prize!!";
 					mes "The prize is ^00FF0010 White Potions~^000000";
 					next;
-					mes "[Kafra Employee]";
+					mes "[Funcionária da  Kafra]";
 					mes "The greatest among potions! Use it before you fall into faint~";
 				}
 				else if (.@choose_prize < 18) {
@@ -1400,7 +1393,7 @@ aldeba_in,88,161,3	script	Kafra Employee#reserve2	4_F_KAFRA3,{
 					mes "The 3rd prize!";
 					mes "The prize is ^00FF0015 Awakening Potions~^000000";
 					next;
-					mes "[Kafra Employee]";
+					mes "[Funcionária da  Kafra]";
 					mes "An awakening potion is better than a concentration potion!";
 					mes "Overdose is not good for your body~";
 				}
@@ -1410,7 +1403,7 @@ aldeba_in,88,161,3	script	Kafra Employee#reserve2	4_F_KAFRA3,{
 					mes "The 3rd prize~~";
 					mes "The prize is ^00FF0010 Berserk Potions~^000000";
 					next;
-					mes "[Kafra Employee]";
+					mes "[Funcionária da  Kafra]";
 					mes "Overdose may cause madness~";
 				}
 				else if (.@choose_prize == 20) {
@@ -1421,7 +1414,7 @@ aldeba_in,88,161,3	script	Kafra Employee#reserve2	4_F_KAFRA3,{
 					mes "The prize is ^00FF001 Yggdrasilberry~^000000";
 					mes "The prize is ^00FF001 Yggdrasil Seed~^000000";
 					next;
-					mes "[Kafra Employee]";
+					mes "[Funcionária da  Kafra]";
 					mes "I guess you spent entire luck for this lottery chance~";
 				}
 			}
@@ -1432,7 +1425,7 @@ aldeba_in,88,161,3	script	Kafra Employee#reserve2	4_F_KAFRA3,{
 					mes "You got the 4th prize!!";
 					mes "The prize is ^00FF00White_Potion 30°³~^000000";
 					next;
-					mes "[Kafra Employee]";
+					mes "[Funcionária da  Kafra]";
 					mes "The greatest among potions! Use it before you fall into faint~";
 				}
 				else if (.@choose_prize < 18) {
@@ -1441,7 +1434,7 @@ aldeba_in,88,161,3	script	Kafra Employee#reserve2	4_F_KAFRA3,{
 					mes "The 3rd prize!";
 					mes "The prize is ^00FF0010 Blue Potions~^000000";
 					next;
-					mes "[Kafra Employee]";
+					mes "[Funcionária da  Kafra]";
 					mes "Try these when your spiritual power is low~";
 				}
 				else if (.@choose_prize < 20) {
