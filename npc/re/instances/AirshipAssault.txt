@@ -17,7 +17,7 @@
 
 dali02,136,79,3	script	Explorador Lion#air1	4_M_DST_GRAND,{
 	mes "[Explorador Lion]";
-	mes "Hm ... depois de vários dias de observações, este lugar parece ser um dispositivo imprimido com as memórias de uma aeronave.";
+	mes "Hm... depois de vários dias de observações, este lugar parece ser um dispositivo imprimido com as memórias de uma aeronave.";
 	next;
 	mes "[Explorador Lion]";
 	mes "...isso é diferente. Eu não tenho mais informações";
@@ -30,12 +30,12 @@ dali02,142,81,3	script	Dispositivo Dimensional#air1	PORTAL,{
 		erasequest 15051;
 	}
 	else if (checkquest(15051,PLAYTIME) == 2) {	// Memorial Dungeon: Airship Assault
-		mes "^ff0000O Calabouço Memorial não pode ser reinserido dentro de 23 horas após a sua última entrada.^000000";
+		mes "^ff0000O Calabouço Memorial não pode ser aberto nas próximas 23 horas após a sua última entrada.^000000";
 		close;
 	}
 	.@party_id = getcharid(1);
 	.@p_name$ = getpartyname(.@party_id);
-	.@md_name$ = "Ataque ao Dirigível";
+	.@md_name$ = "Assault on the Airship";
 
 	if (BaseLevel < 125) {
 		mes "^ff0000Usuários abaixo do nível 125 não podem entrar neste calabouço.^000000";
@@ -121,7 +121,7 @@ dali02,142,81,3	script	Dispositivo Dimensional#air1	PORTAL,{
 		mes "Voando no ar com a força das máquinas... O desenvolvimento da tecnologia é verdadeiramente maravilhoso.";
 		next;
 		mes "[Fenrir]";
-		mes "Mas eu sinto que há algum tipo de poder ... Eu acho que essa aeronave não seria capaz de voar apenas pela tecnologia.";
+		mes "Mas eu sinto que há algum tipo de poder... Eu acho que essa aeronave não seria capaz de voar apenas pela tecnologia.";
 		close3;
 	}
 	cutin "fenrir_b",2;
@@ -182,7 +182,7 @@ dali02,142,81,3	script	Dispositivo Dimensional#air1	PORTAL,{
 		next;
 		cutin "h_iris02",2;
 		mes "[Iris]";
-		mes "Opa ... A propósito capitão, como este grande dirigível voa pelo céu? É tão maravilhoso!";
+		mes "Opa... A propósito capitão, como este grande dirigível voa pelo céu? É tão maravilhoso!";
 		next;
 		cutin "fly_felrock2",2;
 		mes "[Capitão Ferlock]";
@@ -222,7 +222,7 @@ dali02,142,81,3	script	Dispositivo Dimensional#air1	PORTAL,{
 		mes "Algo está vindo para cá...";
 		next;
 		cutin "",255;
-		mes "[Guard]";
+		mes "[Guarda]";
 		mes "Alerta!! Alerta!! Uma grande unidade Wyvern às 7 horass!!";
 		next;
 		cutin "fly_felrock2",2;
@@ -258,7 +258,7 @@ dali02,142,81,3	script	Dispositivo Dimensional#air1	PORTAL,{
 		next;
 		cutin "h_arcana02",2;
 		mes "[Arcana]";
-		mes "Agora ... vamos começar! Gremlins~!!";
+		mes "Agora... vamos começar! Gremlins~!!";
 		mes "É HORA DA FESTA~!!";
 		next;
 		cutin "",255;
@@ -429,7 +429,7 @@ OnMyMobDead:
 	close;
 }
 
-1@air1,46,61,5	script	Gerente de Cafeteria#air1	1_M_PUBMASTER,{
+1@air1,46,61,5	script	Gerente da Cafeteria#air1	1_M_PUBMASTER,{
 	mes "[Gerente de Cafeteria]";
 	mes "Eles podem parecer ameaçadores, mas esses monstros também são clientes da minha cafeteria.";
 	mes "O que você gostaria pedir, monstro?";
@@ -544,7 +544,7 @@ OnMyMobDead:
 	if ('airship_status == 4) {
 		cutin "h_chaos02",2;
 		mes "[Caos]";
-		mes "Porra ... Eles já chegaram até aqui! Graças a você, a Runa do Motor foi defendido.";
+		mes "Porra... Eles já chegaram até aqui! Graças a você, a Runa do Motor foi defendido.";
 		next;
 		cutin "h_iris01",2;
 		mes "[Iris]";
@@ -772,7 +772,7 @@ OnExplosion2:
 	next;
 	cutin "h_guardian1",1;
 	mes "[Shiva]";
-	mes "Hm O que há com a reação? Todo mundo é meio morno ... Foi demais?";
+	mes "Hm O que há com a reação? Todo mundo é meio morno... Foi demais?";
 	next;
 	mes "[Basara]";
 	mes "Hm, não, não. Todo mundo é apenas cativado pela nossa grande entrada.";
@@ -819,7 +819,7 @@ OnExplosion2:
 	cutin "fenrir_a",2;
 	mes "[Fenrir]";
 	mes "Espere!";
-	mes "Seria melhor acabar com essa festa agora ... O que é isso? Freyja mandou você?";
+	mes "Seria melhor acabar com essa festa agora... O que é isso? Freyja mandou você?";
 	next;
 	cutin "h_arcana02",2;
 	mes "[Arcana]";
@@ -846,7 +846,7 @@ OnExplosion2:
 	next;
 	cutin "fenrir_b",2;
 	mes "[Fenrir]";
-	mes "Poderia ser ... A Respiração da Wyvern?!!";
+	mes "Poderia ser... A Respiração da Wyvern?!!";
 	next;
 	cutin "h_arcana02",2;
 	mes "[Arcana]";
@@ -1182,7 +1182,7 @@ OnTimer6000:
 	end;
 }
 
-1@air2,243,58,3	duplicate(Iris#air1)	Captain Ferlock#2air2	4_M_REINDEER
+1@air2,243,58,3	duplicate(Iris#air1)	Capitão Ferlock#2air2	4_M_REINDEER
 
 // Explosions
 1@air2,113,52,0	duplicate(Iris#air1)	fire1#air2	HIDDEN_WARP_NPC
