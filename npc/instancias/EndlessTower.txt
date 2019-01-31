@@ -38,122 +38,122 @@
 //= 2.4 Added GM management function. [Euphy]
 //============================================================ 
 
-alberta,214,77,6	script	Captain Janssen	709,{
+alberta,214,77,6	script	Capitão Janssen	709,{
 	if (checkweight(1201,1) == 0) {
-		mes "^008800Wait here!!";
-		mes "You're carrying too much stuff. Why don't you put some of it away, and then come back.^000000";
+		mes "^008800Espere aqui!!";
+		mes "Você está carregando muitos itens. Por que não volta aqui quando limpar seu inventário?^000000";
 		close;
 	}
 	if (BaseLevel < 50) {
-		mes "[Captain Janssen]";
-		mes "Sigh... I don't know if I can ever go back to sailing the sea...";
+		mes "[Capitão Janssen]";
+		mes "...Não sei dizer se um dia volto a velejar no mar...";
 		close;
 	}
 	set .@name$,strcharinfo(0);
 	if (in_102tower == 1) {
-		mes "^0000ffLooking incredibly excited, the old man ran into the marine shop hurriedly ordering goods. You don't have anything better to do, so you decide to ask him why he is in such a rush.^000000";
+		mes "^0000ffParecendo incrivelmente empolgado, o velho entrou correndo na loja marítima apressadamente pedindo mercadorias. Você não tem nada melhor para fazer, então decide perguntar por que ele está com tanta pressa.^000000";
 		next;
-		mes "^0000ffThe old man, after finishing his orders, walks towards you.^000000";
+		mes "^0000ffO velho, depois de terminar suas ordens, caminha em sua direção.^000000";
 		next;
-		mes "[Captain Janssen]";
-		mes "I was touched when you accepted a request from me, a stranger, so easily. You must truly be one of those good, heroic adventurers. Are you interested in setting out on an ocean voyage?";
+		mes "[Capitão Janssen]";
+		mes "Fiquei tocado quando você aceitou um pedido de mim, um estranho, tão facilmente. Você deve realmente ser um desses aventureiros bons e heróicos. Você está interessado em sair em uma viagem oceânica?";
 		next;
 		mes "["+.@name$+"]";
-		mes "I've sailed a few times... But now that I think about it, I've never gone across the continent.";
+		mes "Já naveguei algumas vezes... Mas agora que penso nisso, nunca atravessei o continente.";
 		next;
-		mes "[Captain Janssen]";
-		mes "No, that's good enough. I may just have one small fishing vessel, but I used to be a captain that commanded a fleet.";
+		mes "[Capitão Janssen]";
+		mes "Não, isso é bom o sufieiente. Eu posso ter apenas uma pequena embarcação de pesca, mas eu costumava ser um capitão que comandava uma frota.";
 		next;
-		mes "[Captain Janssen]";
-		mes "As you may know after a few sea voyages, not many people have gone across the ocean beyond the continent. I too have failed to conquer the ocean.";
+		mes "[Capitão Janssen]";
+		mes "Depois de algumas viagens marítimas, você descobre que poucas pessoas atravessaram o oceano além do continente. Eu também não consegui conquistar o oceano.";
 		next;
-		mes "^0000ffMr. Janssen talked about his perilous ocean journeys for quite a while. You have enough time on your hands, so you sit down, quietly listening to his story.^000000";
+		mes "^0000ffO Sr. Janssen falou sobre suas perigosas viagens oceânicas por um bom tempo. Você tem tempo suficiente em suas mãos, então você senta, ouvindo calmamente a história dele.^000000";
 		next;
-		mes "^0000ffAt least half of his story sounded grossly exaggerated, but something caught your ear: he insists that a humongous tower exists on the ocean, and that it's so tall, it scrapes across the sky.^000000";
+		mes "^0000ffPelo menos metade de sua história soava grosseiramente exagerada, mas algo chamou sua atenção: ele insiste que existe uma gigantesca torre no oceano, e que é tão alta que raspa o céu.^000000";
 		set in_102tower,2;
 		close;
 	} else if (in_102tower == 2) {
-		mes "[Captain Janssen]";
-		mes "So all I could do was cast anchor at that humongous tower after my fleet was wrecked. At first, we were only going to stay there until the rainstorm was over, but it didn't end as soon as we had hoped.";
+		mes "[Capitão Janssen]";
+		mes "Então tudo que eu pude fazer foi ancorar naquela torre enorme depois que minha frota foi destruída. No começo, nós só íamos ficar lá até que a tempestade acabasse, mas não terminou como esperávamos.";
 		next;
-		mes "[Captain Janssen]";
-		mes "My crew was starving, and a few of them walked into the tower in order to find food... They never came back.";
-		next;
-		mes "["+.@name$+"]";
-		mes "Why didn't you go in there with them?";
-		next;
-		mes "[Captain Janssen]";
-		mes "My instincts told me that tower was dangerous. I was curious, but I wasn't going to risk my life. We waited for them to come back for 7 days until the rainstorm was finally over, but no one returned.";
-		next;
-		mes "[Captain Janssen]";
-		mes "In our desperation to survive, we abandoned all our goods, and left the tower only with a little bit of the water and edible plants we'd found around the tower. When we finally reached land, I was the only one alive...";
-		next;
-		mes "^0000ffYou could imagine the heartwretching scene of the dying fleet on their last voyage, even if he didn't explain it any further. A look of somber regret swept over his face as he remained silent a while, and then he said:^000000";
-		next;
-		mes "[Captain Janssen]";
-		mes "I have something I must do before I die. I must retrieve the remains of my crew that died in the tower, and give them a proper burial.";
-		next;
-		mes "[Captain Janssen]";
-		mes "I feel so lucky to meet a warm-hearted adventurer like you. With the money you've given me, I can finally go sailing to the tower again.";
+		mes "[Capitão Janssen]";
+		mes "Minha tripulação estava morrendo de fome, e alguns deles entraram na torre para encontrar comida ... Eles nunca voltaram.";
 		next;
 		mes "["+.@name$+"]";
-		mes "How about hiring me as your first mate?";
+		mes "Por que você não foi lá com eles?";
 		next;
-		mes "[Captain Janssen]";
-		mes "Thank you, but it is an extremely dangerous place. I have my duty to fulfill, but you don't have any obligation to me or them. I don't wish to sacrifice someone as young as you to such a dangerous place.";
+		mes "[Capitão Janssen]";
+		mes "Meus instintos me disseram que a torre era perigosa. Eu estava curioso, mas não ia arriscar minha vida. Esperamos por eles durante 7 dias, até que a tempestade finalmente acabasse, mas ninguém retornou.";
+		next;
+		mes "[Capitão Janssen]";
+		mes "Em nosso desespero para sobreviver, abandonamos todos os nossos produtos e deixamos a torre apenas com um pouco da água e das plantas comestíveis que havíamos encontrado ao redor da torre. Quando finalmente chegamos a terra, eu era o único vivo...";
+		next;
+		mes "^0000ffVocê poderia imaginar a triste cena da frota em sua última viagem, mesmo que ele não explicasse mais nada. Um olhar de arrependimento sombrio varreu seu rosto enquanto ele permaneceu em silêncio por um tempo, e então ele disse:^000000";
+		next;
+		mes "[Capitão Janssen]";
+		mes "Eu tenho algo que devo fazer antes de morrer. Preciso recuperar os restos da minha tripulação que morreu na torre e dar a eles um enterro apropriado.";
+		next;
+		mes "[Capitão Janssen]";
+		mes "Tenho muita sorte em conhecer um aventureiro de bom coração como você. Com o dinheiro que você me deu, posso finalmente ir de novo para a torre.";
 		next;
 		mes "["+.@name$+"]";
-		mes "No...";
+		mes "Que tal me contratar como seu primeiro tripulante?";
+		next;
+		mes "[Capitão Janssen]";
+		mes "Obrigado, mas é um lugar extremamente perigoso. Eu tenho o meu dever de cumprir, mas você não tem nenhuma obrigação para mim ou para eles. Não quero sacrificar alguém tão jovem quanto você a um lugar tão perigoso.";
+		next;
+		mes "["+.@name$+"]";
+		mes "Não...";
 		mes ".";
 		mes ".";
-		mes "As an adventurer, there's my obligation to those in need. I'm also very curious about that place...";
+		mes "Como um aventureiro, eu tenho obrigação para com aqueles que precisam. Eu também estou muito curioso sobre esse lugar...";
 		next;
-		mes "[Captain Janssen]";
-		mes "I was going to leave right away, but since you've joined me, I should give you time to prepare. I'll be waiting here until you're ready to go.";
+		mes "[Capitão Janssen]";
+		mes "Eu ia partir imediatamente, mas desde que você se juntou a mim, eu deveria lhe dar tempo para se preparar. Eu estarei esperando aqui até que você esteja pronto para ir.";
 		next;
-		mes "[Captain Janssen]";
-		mes "...Okay then...";
-		mes "Welcome aboard, first mate.";
+		mes "[Capitão Janssen]";
+		mes "...Certo...";
+		mes "Bem-vindo a bordo, primeiro tripulante.";
 		set in_102tower,3;
 		close;
 	} else if (in_102tower == 3) {
-		mes "[Captain Janssen]";
-		mes "Shall we leave now?";
+		mes "[Capitão Janssen]";
+		mes "Vamos sair agora?";
 		next;
-		switch(select("Yes, let's go!:No, I'm not quite ready...")) {
+		switch(select("Sim, vamos lá!:Não, eu não estou totalmente pronto...")) {
 		case 1:
-			mes "[Captain Janssen]";
-			mes "Then pull up the anchor, first mate!";
+			mes "[Capitão Janssen]";
+			mes "Então puxe a âncora, primeiro tripulante!";
 			close2;
 			set in_102tower,4;
 			warp "e_tower",70,114;
 			end;
 		case 2:
-			mes "[Captain Janssen]";
-			mes "Sure, no problem. Come back when you're ready.";
+			mes "[Capitão Janssen]";
+			mes "Claro, não há problema. Volte quando estiver pronto.";
 			close;
 		}
 	} else if (in_102tower > 3) {
-		mes "[Captain Janssen]";
-		mes "Well, to travel the ocean again, we need to restock on goods. If you give me 10,000 Zeny, I'll take care of the rest.";
+		mes "[Capitão Janssen]";
+		mes "Bem, para viajar pelo oceano novamente, precisamos reabastecer de mercadorias. Se você me der 10,000 Zeny, eu cuido do resto.";
 		next;
-		switch(select("I'll come back later.:Let's go, now!")) {
+		switch(select("Vou voltar mais tarde.:Vamos agora!")) {
 		case 1:
 			mes "["+.@name$+"]";
-			mes "I'm sorry, but I don't have that much money. I'll come back when I save enough.";
+			mes "Me desculpe, mas eu não tenho muito dinheiro. Eu voltarei quando tiver o suficiente.";
 			next;
-			mes "[Captain Janssen]";
-			mes "Sure, no problem. I'll be waiting for your return.";
+			mes "[Capitão Janssen]";
+			mes "Claro, não há problema. Eu estarei esperando pelo seu retorno.";
 			close;
 		case 2:
 			if (Zeny < 10000) {
-				mes "[Captain Janssen]";
-				mes "I'm sorry, but you don't have enough money. I need at least 10,000 Zeny to restock our supplies...";
+				mes "[Capitão Janssen]";
+				mes "Me desculpe, mas você não tem dinheiro suficiente. Preciso de pelo menos 10,000 Zeny para reabastecer nossos suprimentos...";
 				close;
 			}
 			else {
-				mes "[Captain Janssen]";
-				mes "Excellent! Now we're good to go. Let's pull up the anchor again!";
+				mes "[Capitão Janssen]";
+				mes "Excelente! Agora estamos prontos para ir. Vamos levantar a âncora novamente!";
 				set Zeny, Zeny-10000;
 				close2;
 				warp "e_tower",70,114;
@@ -161,39 +161,39 @@ alberta,214,77,6	script	Captain Janssen	709,{
 			}
 		}
 	} else {
-		mes "[Captain Janssen]";
-		mes "Excuse me, are you an adventurer?";
+		mes "[Capitão Janssen]";
+		mes "Com licença, você é um aventureiro?";
 		next;
-		mes "[Captain Janssen]";
-		mes "I'm sorry to ask you this, especially when this is the first time we've ever met, but can you do me a favor? I'll make it short.";
+		mes "[Capitão Janssen]";
+		mes "Lamento te perguntar isso, especialmente quando esta é a primeira vez que nos encontramos, mas você pode me fazer um favor? Vai ser bem rápido.";
 		next;
-		mes "[Captain Janssen]";
-		mes "Can you donate ^0000ff10,000 Zeny^000000 to me? It's for a cause that's important to me...";
+		mes "[Capitão Janssen]";
+		mes "Você pode doar ^0000ff10,000 Zeny^000000 para mim? É por uma causa que é importante para mim...";
 		next;
-		switch(select("No!:Sure thing.")) {
+		switch(select("Não!:Claro.")) {
 		case 1:
 			mes "["+.@name$+"]";
-			mes "I'm sorry, but you've got the wrong person to ask that.";
+			mes "Me desculpe, mas você pergunto para a pessoa errada.";
 			next;
-			mes "[Captain Janssen]";
-			mes "I see... Sorry to bother you. I understand it was too rude to ask something like that to begin with.";
+			mes "[Capitão Janssen]";
+			mes "Entendo... Desculpe incomodá-lo. Eu entendo que era muito rude perguntar algo assim logo de começo.";
 			close;
 		case 2:
-			mes "[Captain Janssen]";
-			mes "Huh? Are you sure that you don't mind giving me that much money? Wow, thank you so much!";
+			mes "[Capitão Janssen]";
+			mes "Hã? Tem certeza de que não se importa em me dar tanto dinheiro? Uau, muito obrigado!";
 			next;
 			if (Zeny < 10000) {
-				mes "[Captain Janssen]";
-				mes "...I'm sorry, but I don't think you have 10,000 Zeny. Thank you for your kindness, but I need more than that.";
+				mes "[Capitão Janssen]";
+				mes "...Me desculpe, mas eu não acho que você tenha 10,000 Zeny. Obrigado por sua gentileza, mas preciso de mais do que isso.";
 				close;
 			} else {
 				mes "["+.@name$+"]";
-				mes "I don't know why you'd need so much money, but here. You can take it.";
+				mes "Eu não sei porque você precisa tanto dinheiro, mas aqui. Você pode levá-lo.";
 				next;
-				mes "^0000ffYou have donated 10,000 Zeny to Captain Janssen^000000.";
+				mes "^0000ffVocê doou 10,000 Zeny ao Capitão Janssen^000000.";
 				next;
-				mes "[Captain Janssen]";
-				mes "Thank you so much! Now I can stock up on food and materials for my ship. You're kind, very kind!";
+				mes "[Capitão Janssen]";
+				mes "Muito obrigado! Agora eu posso estocar comida e materiais para o meu navio. Você é gentil, muito gentil!";
 				set Zeny, Zeny-10000;
 				set in_102tower,1;
 				close;
@@ -202,38 +202,38 @@ alberta,214,77,6	script	Captain Janssen	709,{
 	}
 }
 
-e_tower,81,105,0	script	Tower Protection Stone	406,{
+e_tower,81,105,0	script	Pedra de Proteção	406,{
 
 	set .@party_id,getcharid(1);
-	set .@md_name$,"Endless Tower";
+	set .@md_name$,"Torre Sem Fim";
 
 	set .@etower_timer,checkquest(60200,PLAYTIME); // 1 week
 	set .@etower_timer2,checkquest(60201,PLAYTIME); // 4 hours
 
 	if (!instance_check_party(.@party_id,2)) {
-		mes "Make or join a party with more than 1 member and try again.";
+		mes "Faça ou participe de um grupo com mais de um membro e tente novamente.";
 		close;
 	}
 	switch(.@etower_timer) {
 	case -1:
 		if (is_party_leader() == true) {
-			mes "Confirmed the party has been made. Would you like to reserve entrance to the Endless Tower?";
+			mes "Confirmado que o grupo foi formado. Gostaria de reservar entrada para a Torre Sem Fim?";
 			next;
-			switch(select("Generate dungeon "+.@md_name$+":Enter the dungeon:Return to Alberta:Cancel")) {
+			switch(select("Gerar calabouço "+.@md_name$+":Entrar no calabouço:Retornar a Alberta:Cancelar")) {
 			case 1:
 				if (instance_create(.@md_name$) < 0) {
-					mes "Party Name: "+ getpartyname(.@party_id);
-					mes "Party Leader: "+strcharinfo(0);
-					mes "^0000ff"+.@md_name$+" ^000000- Reservation Failed!";
+					mes "Nome do Grupo: "+ getpartyname(.@party_id);
+					mes "Nome do Líder: "+strcharinfo(0);
+					mes "^0000ff"+.@md_name$+" ^000000- Reserva falhou!";
 					close;
 				}
-				mes "^0000ff"+.@md_name$+"^000000 - Try to reserve";
-				mes "After making a reservation, you have to talk to NPC behind and select the menu 'Enter the Dungeon' to enter the dungeon.";
+				mes "^0000ff"+.@md_name$+"^000000 - Tente reservar";
+				mes "Depois de fazer uma reserva, você tem que falar com o NPC e selecionar o menu 'Entrar no calabouço' para entrar no calabouço.";
 				close;
 			case 2:
 				callsub L_Enter,0,1;
 			case 3:
-				mes "I will move you to Alberta.";
+				mes "Eu vou te levar para Alberta.";
 				close2;
 				warp "alberta",223,36;
 				end;
@@ -241,11 +241,11 @@ e_tower,81,105,0	script	Tower Protection Stone	406,{
 				close;
 			}
 		}
-		switch(select("Enter the "+.@md_name$+":Return to Alberta:Cancel")) {
+		switch(select("Entrar na "+.@md_name$+":Retornar a Alberta:Cancelar")) {
 		case 1:
 			callsub L_Enter,1,1;
 		case 2:
-			mes "I will move you to Alberta.";
+			mes "Eu vou te levar para Alberta.";
 			close2;
 			warp "alberta",223,36;
 			end;
@@ -255,13 +255,13 @@ e_tower,81,105,0	script	Tower Protection Stone	406,{
 	case 0:
 	case 1:
 		if (.@etower_timer2 < 2 && getcharid(1) == etower_partyid) {
-			mes "If you have the dungeon generated already, you can enter it. ";
+			mes "Se você já criou o calabouço, pode entrar. ";
 			next;
-			switch(select("Enter the "+.@md_name$+":Return to Alberta:Cancel")) {
+			switch(select("Entrar no "+.@md_name$+":Retornar a Alberta:Cancelar")) {
 			case 1:
 				callsub L_Enter,0,0;
 			case 2:
-				mes "I will move you to Alberta.";
+				mes "Eu vou te levar para Alberta.";
 				close2;
 				warp "alberta",223,36;
 				end;
@@ -277,9 +277,9 @@ e_tower,81,105,0	script	Tower Protection Stone	406,{
 			set .@dun_m,(.@dun_ent_t - (.@dun_h * 3600)) / 60;
 			set .@dun_s,.@dun_ent_t - ((.@dun_h * 3600) + (.@dun_m * 60));
 
-			mes "Due to the tower's aftereffects, you cannot enter the dungeon right now, " + .@dun_h + "hours " + .@dun_m + "minutes " + .@dun_s + "seconds left to enter the next dungeon.";
+			mes "Devido aos efeitos posteriores da Torre, você não pode entrar no calabouço agora, " + .@dun_h + "hours " + .@dun_m + "minutes " + .@dun_s + "segundos para você conseguir entrar no calabouço.";
 			next;
-			mes "It is dangerous here. Let me move you to Alberta.";
+			mes "É perigoso aqui. Deixe-me levá-lo para Alberta.";
 			close2;
 			warp "alberta",223,36;
 			end;
@@ -288,24 +288,24 @@ e_tower,81,105,0	script	Tower Protection Stone	406,{
 		set etower_timer,0;
 		erasequest 60200;
 		erasequest 60201;
-		mes "^0000ffThe records and after effects related to the Endless Tower have been removed. You can generate and enter the Endless Tower again.^000000";
+		mes "^0000ffOs registros e os efeitos posteriores relacionados à Torre Sem Fim foram removidos. Você pode gerar e entrar na Torre Sem Fim novamente.^000000";
 		close;
 	}
 
 L_Enter:
-	switch(instance_enter("Endless Tower")) {
+	switch(instance_enter("Torre Sem Fim")) {
 	case IE_OTHER:
-		mes "An unknown error has occurred.";
+		mes "Um erro desconhecido ocorreu.";
 		close;
 	case IE_NOINSTANCE:
-		mes "The memorial dungeon Endless Tower does not exist.";
-		mes "The party leader did not generate the dungeon yet.";
+		mes "O calabouço memorial, Torre Sem Fim, não existe.";
+		mes "O líder do grupo não gerou o calabouço ainda.";
 		close;
 	case IE_NOMEMBER:
-		mes "You can enter the dungeon after making the party.";
+		mes "Você pode entrar no calabouço depois de fazer um grupo.";
 		close;
 	case IE_OK:
-		mapannounce "e_tower", strcharinfo(0) +" of the party, "+ getpartyname( getcharid(1) ) +", is entering the dungeon, Endless Tower.",bc_map,"0x00ff99",FW_NORMAL,12;
+		mapannounce "e_tower", strcharinfo(0) +" do grupo, "+ getpartyname( getcharid(1) ) +", está entrando na masmorra, Torre Sem Fim.",bc_map,"0x00ff99",FW_NORMAL,12;
 		if (getarg(1)) {
 			set etower_timer,gettimetick(2);
 			set etower_partyid, getcharid(1);
@@ -707,38 +707,38 @@ function	script	F_Tower_Monster	{
 		areamonster .@map$,352,9,362,45,"Matyr",1146,10,.@label$;
 		break;
 	case 51:
-		areamonster .@map$,9,351,19,387,"Mini Demon",1292,20,.@label$;
-		areamonster .@map$,9,351,19,387,"Diabolic",1382,20,.@label$;
+		areamonster .@map$,9,351,19,387,"Diabolik",1292,20,.@label$;		// ?
+		areamonster .@map$,9,351,19,387,"Diabinho",1382,20,.@label$;		// ?
 		areamonster .@map$,9,351,19,387,"Deviruchi",1109,10,.@label$;
 		break;
 	case 52:
-		areamonster .@map$,93,351,103,387,"Harpy",1376,20,.@label$;
+		areamonster .@map$,93,351,103,387,"Harpia",1376,20,.@label$;
 		areamonster .@map$,93,351,103,387,"Grand Peco",1369,10,.@label$;
-		areamonster .@map$,93,351,103,387,"Bloody Butterfly",1408,10,.@label$;
-		areamonster .@map$,93,351,103,387,"Gargoyle",1253,10,.@label$;
-		areamonster .@map$,93,351,103,387,"Hill Wind",1680,5,.@label$;
-		areamonster .@map$,93,351,103,387,"Hill Wind",1629,5,.@label$;
+		areamonster .@map$,93,351,103,387,"Borboleta Sanguinária",1408,10,.@label$;
+		areamonster .@map$,93,351,103,387,"Gárgula",1253,10,.@label$;
+		areamonster .@map$,93,351,103,387,"Vento da Colina",1680,5,.@label$;
+		areamonster .@map$,93,351,103,387,"Vento da Colina",1629,5,.@label$;
 		break;
 	case 53:
-		areamonster .@map$,181,351,191,387,"Assaulter",1315,25,.@label$;
+		areamonster .@map$,181,351,191,387,"Agressor",1315,25,.@label$;
 		areamonster .@map$,181,351,191,387,"Shinobi",1401,30,.@label$;
 		break;
 	case 54:
 		areamonster .@map$,267,351,277,387,"Chepet",1250,10,.@label$;
-		areamonster .@map$,267,351,277,387,"Mariontte",1143,10,.@label$;
-		areamonster .@map$,267,351,277,387,"Miyabi Doll",1404,10,.@label$;
+		areamonster .@map$,267,351,277,387,"Marionete",1143,10,.@label$;
+		areamonster .@map$,267,351,277,387,"Boneco de Miyabi",1404,10,.@label$;
 		break;
 	case 55:
 		areamonster .@map$,352,351,362,387,"Medusa",1148,25,.@label$;
-		areamonster .@map$,352,351,362,387,"Evil Snake Lord",1418,1,.@label$;
-		areamonster .@map$,352,351,362,387,"Isis",1029,15,.@label$;
-		areamonster .@map$,352,351,362,387,"Sidewinder",1037,15,.@label$;
+		areamonster .@map$,352,351,362,387,"Serpente Suprema",1418,1,.@label$;
+		areamonster .@map$,352,351,362,387,"Ísis",1029,15,.@label$;
+		areamonster .@map$,352,351,362,387,"Sorrateiro",1037,15,.@label$;
 		break;
 	case 56:
-		areamonster .@map$,9,267,19,303,"Freezer",1319,10,.@label$;
-		areamonster .@map$,9,267,19,303,"Hatii Baby",1515,10,.@label$;
-		areamonster .@map$,9,267,19,303,"Ice Titan",1777,15,.@label$;
-		areamonster .@map$,9,267,19,303,"Snowier",1775,10,.@label$;
+		areamonster .@map$,9,267,19,303,"Congelador",1319,10,.@label$;
+		areamonster .@map$,9,267,19,303,"Filhote de Hatii",1515,10,.@label$;
+		areamonster .@map$,9,267,19,303,"Titã de Gelo",1777,15,.@label$;
+		areamonster .@map$,9,267,19,303,"Yeti",1775,10,.@label$;
 		areamonster .@map$,9,267,19,303,"Gazeti",1778,10,.@label$;
 		break;
 	case 57:
@@ -753,16 +753,16 @@ function	script	F_Tower_Monster	{
 		areamonster .@map$,93,267,103,303,"Drops",1113,5,.@label$;
 		break;
 	case 58:
-		areamonster .@map$,181,267,191,303,"Phendark",1202,20,.@label$;
+		areamonster .@map$,181,267,191,303,"Fendark",1202,20,.@label$;
 		areamonster .@map$,181,267,191,303,"Rybio",1201,10,.@label$;
-		areamonster .@map$,181,267,191,303,"Zombie Prisoner",1197,10,.@label$;
-		areamonster .@map$,181,267,191,303,"Skeleton Prisoner",1196,5,.@label$;
-		areamonster .@map$,181,267,191,303,"Injustice",1257,5,.@label$;
+		areamonster .@map$,181,267,191,303,"Zumbi Prisioneiro",1197,10,.@label$;
+		areamonster .@map$,181,267,191,303,"Esqueleto Prisioneiro",1196,5,.@label$;
+		areamonster .@map$,181,267,191,303,"Injustiçado",1257,5,.@label$;
 		break;
 	case 59:
-		areamonster .@map$,267,267,277,303,"Ancient Mimic",1699,30,.@label$;
-		areamonster .@map$,267,267,277,303,"Mimic",1191,20,.@label$;
-		areamonster .@map$,267,267,277,303,"Mystcase",1249,10,.@label$;
+		areamonster .@map$,267,267,277,303,"Mímico Antigo",1699,30,.@label$;
+		areamonster .@map$,267,267,277,303,"Mímico",1191,20,.@label$;
+		areamonster .@map$,267,267,277,303,"Presente",1249,10,.@label$;
 		break;
 	case 60:
 		areamonster .@map$,352,267,362,303,"Egnigem Cenia",1658,1,.@label$;
@@ -778,82 +778,82 @@ function	script	F_Tower_Monster	{
 		areamonster .@map$,9,180,19,216,"Agav",1769,10,.@label$;
 		areamonster .@map$,9,180,19,216,"Echio",1770,10,.@label$;
 		areamonster .@map$,9,180,19,216,"Isilla",1772,5,.@label$;
-		areamonster .@map$,9,180,19,216,"Mobster",1313,10,.@label$;
+		areamonster .@map$,9,180,19,216,"Yakuza",1313,10,.@label$;
 		areamonster .@map$,9,180,19,216,"Pasana",1154,10,.@label$;
 		areamonster .@map$,9,180,19,216,"Vanberk",1771,5,.@label$;
 		break;
 	case 62:
-		areamonster .@map$,93,180,103,216,"Wanderer",1208,35,.@label$;
+		areamonster .@map$,93,180,103,216,"Andarilho",1208,35,.@label$;
 		break;
 	case 63:
-		areamonster .@map$,181,180,191,216,"Ragged Zombie",1865,20,.@label$;
-		areamonster .@map$,181,180,191,216,"Zombie Master",1298,10,.@label$;
-		areamonster .@map$,181,180,191,216,"Zombie Prisoner",1197,5,.@label$;
-		areamonster .@map$,181,180,191,216,"Orc Zombie",1153,5,.@label$;
-		areamonster .@map$,181,180,191,216,"Zombie",1015,5,.@label$;
+		areamonster .@map$,181,180,191,216,"Zumbi Dilacerado",1865,20,.@label$;
+		areamonster .@map$,181,180,191,216,"Zumbi Mestre",1298,10,.@label$;
+		areamonster .@map$,181,180,191,216,"Zumbi Prisioneiro",1197,5,.@label$;
+		areamonster .@map$,181,180,191,216,"Orc Zumbi",1153,5,.@label$;
+		areamonster .@map$,181,180,191,216,"Zumbi",1015,5,.@label$;
 		break;
 	case 64:
 		areamonster .@map$,267,180,277,216,"Ungoliant",1618,30,.@label$;
-		areamonster .@map$,267,180,277,216,"Ancient Worm",1305,2,.@label$;
-		areamonster .@map$,267,180,277,216,"Caterpillar",1300,2,.@label$;
-		areamonster .@map$,267,180,277,216,"Creamy Fear",1293,2,.@label$;
-		areamonster .@map$,267,180,277,216,"Killer Mantis",1294,2,.@label$;
-		areamonster .@map$,267,180,277,216,"Giant Hornet",1303,2,.@label$;
+		areamonster .@map$,267,180,277,216,"Verme Ancião",1305,2,.@label$;
+		areamonster .@map$,267,180,277,216,"Lagarta",1300,2,.@label$;
+		areamonster .@map$,267,180,277,216,"Creamy Ameaçadora",1293,2,.@label$;
+		areamonster .@map$,267,180,277,216,"Mantis Assassino",1294,2,.@label$;
+		areamonster .@map$,267,180,277,216,"Zangão",1303,2,.@label$;
 		break;
 	case 65:
-		areamonster .@map$,352,180,362,216,"Atros",1785,1,.@label$;
+		areamonster .@map$,352,180,362,216,"Atroce",1785,1,.@label$;
 		areamonster .@map$,352,180,362,216,"Galion",1783,20,.@label$;
 		break;
 	case 66:
 		areamonster .@map$,9,96,19,132,"Incubus",1374,20,.@label$;
 		areamonster .@map$,9,96,19,132,"Aliot",1736,20,.@label$;
-		areamonster .@map$,9,96,19,132,"Injustice",1257,10,.@label$;
+		areamonster .@map$,9,96,19,132,"Injustiçado",1257,10,.@label$;
 		break;
 	case 67:
 		areamonster .@map$,93,96,103,132,"Acidus",1716,10,.@label$;
 		areamonster .@map$,93,96,103,132,"Acidus",1713,10,.@label$;
-		areamonster .@map$,93,96,103,132,"Deleter",1384,5,.@label$;
-		areamonster .@map$,93,96,103,132,"Mutant Dragonoid",1262,10,.@label$;
-		areamonster .@map$,93,96,103,132,"Petite",1156,5,.@label$;
+		areamonster .@map$,93,96,103,132,"Exterminador",1384,5,.@label$;
+		areamonster .@map$,93,96,103,132,"Dragão Mutante",1262,10,.@label$;
+		areamonster .@map$,93,96,103,132,"Petite Voador",1156,5,.@label$;
 		break;
 	case 68:
-		areamonster .@map$,181,96,191,132,"Lava Golem",1366,10,.@label$;
-		areamonster .@map$,181,96,191,132,"Stalactic Golem",1278,10,.@label$;
-		areamonster .@map$,181,96,191,132,"Ice Titan",1777,10,.@label$;
-		areamonster .@map$,181,96,191,132,"Wooden Golem",1497,5,.@label$;
+		areamonster .@map$,181,96,191,132,"Golem de Lava",1366,10,.@label$;
+		areamonster .@map$,181,96,191,132,"Golem Estalactítico",1278,10,.@label$;
+		areamonster .@map$,181,96,191,132,"Titã de Gelo",1777,10,.@label$;
+		areamonster .@map$,181,96,191,132,"Golem de Madeira",1497,5,.@label$;
 		areamonster .@map$,181,96,191,132,"Golem",1040,5,.@label$;
 		break;
 	case 69:
-		areamonster .@map$,267,96,277,132,"Dame of Sentinel",1700,20,.@label$;
-		areamonster .@map$,267,96,277,132,"Mistress of Shelter",1701,10,.@label$;
-		areamonster .@map$,267,96,277,132,"Baroness of Retribution",1702,10,.@label$;
-		areamonster .@map$,267,96,277,132,"Lady Solace",1703,10,.@label$;
-		areamonster .@map$,267,96,277,132,"False Angel",1371,10,.@label$;
+		areamonster .@map$,267,96,277,132,"Dama da Guarda",1700,20,.@label$;
+		areamonster .@map$,267,96,277,132,"Dama da Guarda ",1701,10,.@label$;
+		areamonster .@map$,267,96,277,132,"Baronesa da Retribuição",1702,10,.@label$;
+		areamonster .@map$,267,96,277,132,"Senhora do Conforto",1703,10,.@label$;
+		areamonster .@map$,267,96,277,132,"Anjo Fajuto",1371,10,.@label$;
 		break;
 	case 70:
-		areamonster .@map$,352,96,362,132,"Orc Hero",1087,1,.@label$;
-		areamonster .@map$,352,96,362,132,"Orc Lord",1190,1,.@label$;
-		areamonster .@map$,352,96,362,132,"Orc Baby",1686,20,.@label$;
+		areamonster .@map$,352,96,362,132,"Orc Herói",1087,1,.@label$;
+		areamonster .@map$,352,96,362,132,"Senhor dos Orcs",1190,1,.@label$;
+		areamonster .@map$,352,96,362,132,"Filhote de Orc",1686,20,.@label$;
 		break;
 	case 71:
 		areamonster .@map$,9,9,19,45,"Succubus",1370,20,.@label$;
-		areamonster .@map$,9,9,19,45,"Nightmare Terror",1379,20,.@label$;
+		areamonster .@map$,9,9,19,45,"Pesadelo Sombrio",1379,20,.@label$;
 		areamonster .@map$,9,9,19,45,"Incubus",1374,20,.@label$;
-		areamonster .@map$,9,9,19,45,"Nightmare",1061,5,.@label$;
+		areamonster .@map$,9,9,19,45,"Pesadelo",1061,5,.@label$;
 		break;
 	case 72:
 		areamonster .@map$,93,9,103,45,"Margaretha Sorin",1637,10,.@label$;
-		areamonster .@map$,93,9,103,45,"Permeter",1314,10,.@label$;
+		areamonster .@map$,93,9,103,45,"Batedor",1314,10,.@label$;
 		areamonster .@map$,93,9,103,45,"Errende Ebecee",1655,10,.@label$;
-		areamonster .@map$,93,9,103,45,"Enchanted Peach Tree",1410,10,.@label$;
+		areamonster .@map$,93,9,103,45,"Pessegueira Encantada",1410,10,.@label$;
 		break;
 	case 73:
 		areamonster .@map$,181,9,191,45,"Succubus",1370,10,.@label$;
 		areamonster .@map$,181,9,191,45,"Loli Ruri",1505,20,.@label$;
 		areamonster .@map$,181,9,191,45,"Aliza",1737,10,.@label$;
-		areamonster .@map$,181,9,191,45,"Zealotus",1200,5,.@label$;
+		areamonster .@map$,181,9,191,45,"Jirtas",1200,5,.@label$;
 		areamonster .@map$,181,9,191,45,"Alice",1275,5,.@label$;
-		areamonster .@map$,181,9,191,45,"Green Maiden",1631,10,.@label$;
+		areamonster .@map$,181,9,191,45,"Donzela Verde",1631,10,.@label$;
 		break;
 	case 74:
 		areamonster .@map$,267,9,277,45,"Dimik",1671,6,.@label$;
@@ -867,139 +867,139 @@ function	script	F_Tower_Monster	{
 		areamonster .@map$,267,9,277,45,"Venatu",1676,6,.@label$;
 		break;
 	case 75:
-		areamonster .@map$,352,9,362,45,"Baphomet",1039,1,.@label$;
-		areamonster .@map$,352,9,362,45,"Dark Lord",1272,1,.@label$;
-		areamonster .@map$,352,9,362,45,"Baphomet Jr.",1101,20,.@label$;
-		areamonster .@map$,352,9,362,45,"Dark Illusion",1302,10,.@label$;
+		areamonster .@map$,352,9,362,45,"Bafomé",1039,1,.@label$;
+		areamonster .@map$,352,9,362,45,"Senhor das Trevas",1272,1,.@label$;
+		areamonster .@map$,352,9,362,45,"Bafomé Jr.",1101,20,.@label$;
+		areamonster .@map$,352,9,362,45,"Ilusão das Trevas",1302,10,.@label$;
 		break;
 	case 76:
-		areamonster .@map$,9,351,19,387,"Abysmal Knight",1219,30,.@label$;
-		areamonster .@map$,9,351,19,387,"Nightmare Terror",1379,20,.@label$;
-		areamonster .@map$,9,351,19,387,"Nightmare",1061,10,.@label$;
+		areamonster .@map$,9,351,19,387,"Cavaleiro do Abismo",1219,30,.@label$;
+		areamonster .@map$,9,351,19,387,"Pesadelo Sombrio",1379,20,.@label$;
+		areamonster .@map$,9,351,19,387,"Pesadelo",1061,10,.@label$;
 		break;
 	case 77:
 		areamonster .@map$,93,351,103,387,"Banshee",1867,30,.@label$;
-		areamonster .@map$,93,351,103,387,"Wraith Dead",1291,10,.@label$;
-		areamonster .@map$,93,351,103,387,"Evil Druid",1117,10,.@label$;
-		areamonster .@map$,93,351,103,387,"Wraith",1192,10,.@label$;
-		areamonster .@map$,93,351,103,387,"Wind Ghost",1263,10,.@label$;
+		areamonster .@map$,93,351,103,387,"Aparição",1291,10,.@label$;
+		areamonster .@map$,93,351,103,387,"Druida Maligno",1117,10,.@label$;
+		areamonster .@map$,93,351,103,387,"Alma Penada",1192,10,.@label$;
+		areamonster .@map$,93,351,103,387,"Xamã do Vento",1263,10,.@label$;
 		break;
 	case 78:
-		areamonster .@map$,181,351,191,387,"Sword Master",1829,5,.@label$;
-		areamonster .@map$,181,351,191,387,"Bloody Knight",1268,10,.@label$;
-		areamonster .@map$,181,351,191,387,"Abysmal Knight",1219,5,.@label$;
+		areamonster .@map$,181,351,191,387,"Espadachim Guardião",1829,5,.@label$;
+		areamonster .@map$,181,351,191,387,"Cavaleiro Sanguinário",1268,10,.@label$;
+		areamonster .@map$,181,351,191,387,"Cavaleiro do Abismo",1219,5,.@label$;
 		areamonster .@map$,181,351,191,387,"Dullahan",1504,10,.@label$;
 		areamonster .@map$,181,351,191,387,"Raydric",1163,20,.@label$;
 		break;
 	case 79:
-		areamonster .@map$,267,351,277,387,"Hydro",1720,10,.@label$;
+		areamonster .@map$,267,351,277,387,"Hydrolancer",1720,10,.@label$;
 		areamonster .@map$,267,351,277,387,"Ferus",1714,10,.@label$;
 		areamonster .@map$,267,351,277,387,"Ferus",1717,10,.@label$;
-		areamonster .@map$,267,351,277,387,"Deleter",1385,5,.@label$;
+		areamonster .@map$,267,351,277,387,"Deletério",1385,5,.@label$;
 		areamonster .@map$,267,351,277,387,"Petite",1155,5,.@label$;
 		break;
 	case 80:
-		areamonster .@map$,352,351,362,387,"Falling Bishop",1871,1,.@label$;
-		areamonster .@map$,352,351,362,387,"Necromancer",1870,15,.@label$;
+		areamonster .@map$,352,351,362,387,"Bispo Decadente",1871,1,.@label$;
+		areamonster .@map$,352,351,362,387,"Necromante",1870,15,.@label$;
 		break;
 	case 81:
 		areamonster .@map$,9,267,19,303,"Mysteltainn",1203,20,.@label$;
-		areamonster .@map$,9,267,19,303,"Ogretooth",1204,20,.@label$;
-		areamonster .@map$,9,267,19,303,"Executioner",1205,20,.@label$;
+		areamonster .@map$,9,267,19,303,"Tirfing",1204,20,.@label$;
+		areamonster .@map$,9,267,19,303,"Executora",1205,20,.@label$;
 		break;
 	case 82:
-		areamonster .@map$,93,267,103,303,"Bloody Knight",1268,10,.@label$;
+		areamonster .@map$,93,267,103,303,"Cavaleiro Sanguinário",1268,10,.@label$;
 		areamonster .@map$,93,267,103,303,"Agav",1769,10,.@label$;
-		areamonster .@map$,93,267,103,303,"Bloody Murderer",1507,10,.@label$;
+		areamonster .@map$,93,267,103,303,"Serial Killer",1507,10,.@label$;
 		areamonster .@map$,93,267,103,303,"Skogul",1752,10,.@label$;
-		areamonster .@map$,93,267,103,303,"Injustice",1257,10,.@label$;
+		areamonster .@map$,93,267,103,303,"Injustiçado",1257,10,.@label$;
 		break;
 	case 83:
 		areamonster .@map$,181,267,191,303,"Skeggiold",1754,10,.@label$;
-		areamonster .@map$,181,267,191,303,"Dark Illusion",1302,10,.@label$;
-		areamonster .@map$,181,267,191,303,"Gryphon",1259,10,.@label$;
-		areamonster .@map$,181,267,191,303,"Chimera",1283,10,.@label$;
+		areamonster .@map$,181,267,191,303,"Ilusão das Trevas",1302,10,.@label$;
+		areamonster .@map$,181,267,191,303,"Grifo",1259,10,.@label$;
+		areamonster .@map$,181,267,191,303,"Quimera",1283,10,.@label$;
 		break;
 	case 84:
 		areamonster .@map$,267,267,277,303,"Succubus",1370,10,.@label$;
-		areamonster .@map$,267,267,277,303,"Dark Illusion",1302,20,.@label$;
-		areamonster .@map$,267,267,277,303,"Owl Duke",1320,10,.@label$;
-		areamonster .@map$,267,267,277,303,"Owl Baron",1295,10,.@label$;
+		areamonster .@map$,267,267,277,303,"Ilusão das Trevas",1302,20,.@label$;
+		areamonster .@map$,267,267,277,303,"Duque Coruja",1320,10,.@label$;
+		areamonster .@map$,267,267,277,303,"Barão Coruja",1295,10,.@label$;
 		areamonster .@map$,267,267,277,303,"Incubus",1374,10,.@label$;
 		break;
 	case 85:
 		areamonster .@map$,352,267,362,303,"Ifrit",1832,1,.@label$;
 		break;
 	case 86:
-		areamonster .@map$,9,180,19,216,"Hydro",1720,10,.@label$;
-		areamonster .@map$,9,180,19,216,"Gryphon",1259,10,.@label$;
-		areamonster .@map$,9,180,19,216,"Chimera",1283,10,.@label$;
-		areamonster .@map$,9,180,19,216,"Majoruros",1310,10,.@label$;
+		areamonster .@map$,9,180,19,216,"Hydrolancer",1720,10,.@label$;
+		areamonster .@map$,9,180,19,216,"Grifo",1259,10,.@label$;
+		areamonster .@map$,9,180,19,216,"Quimera",1283,10,.@label$;
+		areamonster .@map$,9,180,19,216,"Majorous",1310,10,.@label$;
 		break;
 	case 87:
-		areamonster .@map$,93,180,103,216,"Salamander",1831,15,.@label$;
+		areamonster .@map$,93,180,103,216,"Salamandra",1831,15,.@label$;
 		areamonster .@map$,93,180,103,216,"Kasa",1833,20,.@label$;
-		areamonster .@map$,93,180,103,216,"Lava Golem",1366,15,.@label$;
+		areamonster .@map$,93,180,103,216,"Golem de Lava",1366,15,.@label$;
 		areamonster .@map$,93,180,103,216,"Gajomart",1309,10,.@label$;
 		break;
 	case 88:
-		areamonster .@map$,181,180,191,216,"Necromancer",1870,15,.@label$;
-		areamonster .@map$,181,180,191,216,"Anubis",1098,15,.@label$;
-		areamonster .@map$,181,180,191,216,"Wraith Dead",1291,10,.@label$;
-		areamonster .@map$,181,180,191,216,"Ancient Mummy",1297,10,.@label$;
+		areamonster .@map$,181,180,191,216,"Necromante",1870,15,.@label$;
+		areamonster .@map$,181,180,191,216,"Anúbis",1098,15,.@label$;
+		areamonster .@map$,181,180,191,216,"Aparição",1291,10,.@label$;
+		areamonster .@map$,181,180,191,216,"Múmia Anciã",1297,10,.@label$;
 		areamonster .@map$,181,180,191,216,"Khalitzburg",1132,10,.@label$;
 		break;
 	case 89:
-		areamonster .@map$,267,180,277,216,"Odium of Thanatos",1704,6,.@label$;
-		areamonster .@map$,267,180,277,216,"Despero of Thanatos",1705,6,.@label$;
-		areamonster .@map$,267,180,277,216,"Maero of Thanatos",1706,6,.@label$;
-		areamonster .@map$,267,180,277,216,"Dolor of Thanatos",1707,6,.@label$;
+		areamonster .@map$,267,180,277,216,"Odium de Thanatos",1704,6,.@label$;
+		areamonster .@map$,267,180,277,216,"Despero de Thanatos",1705,6,.@label$;
+		areamonster .@map$,267,180,277,216,"Maero de Thanatos",1706,6,.@label$;
+		areamonster .@map$,267,180,277,216,"Dolor de Thanatos",1707,6,.@label$;
 		break;
 	case 90:
-		areamonster .@map$,352,180,362,216,"Valkyrie Randgris",1751,1,.@label$;
-		areamonster .@map$,352,180,362,216,"Baroness of Retribution",1702,10,.@label$;
-		areamonster .@map$,352,180,362,216,"Lady Solace",1703,10,.@label$;
-		areamonster .@map$,352,180,362,216,"False Angel",1371,10,.@label$;
+		areamonster .@map$,352,180,362,216,"Valquíria Randgris",1751,1,.@label$;
+		areamonster .@map$,352,180,362,216,"Baronesa da Retribuição",1702,10,.@label$;
+		areamonster .@map$,352,180,362,216,"Senhora do Conforto",1703,10,.@label$;
+		areamonster .@map$,352,180,362,216,"Anjo Fajuto",1371,10,.@label$;
 		break;
 	case 91:
 		areamonster .@map$,9,96,19,132,"Cecil Damon",1638,10,.@label$;
-		areamonster .@map$,9,96,19,132,"Bow Master",1830,10,.@label$;
-		areamonster .@map$,9,96,19,132,"Kavac",1656,30,.@label$;
+		areamonster .@map$,9,96,19,132,"Arqueiro Guardião",1830,10,.@label$;
+		areamonster .@map$,9,96,19,132,"Kavatch Icarus",1656,30,.@label$;
 		break;
 	case 92:
 		areamonster .@map$,93,96,103,132,"Kathryne Keyron",1639,15,.@label$;
-		areamonster .@map$,93,96,103,132,"Elder",1377,10,.@label$;
+		areamonster .@map$,93,96,103,132,"Ancião",1377,10,.@label$;
 		areamonster .@map$,93,96,103,132,"Laurell Weinder",1657,10,.@label$;
-		areamonster .@map$,93,96,103,132,"Wind Ghost",1263,10,.@label$;
+		areamonster .@map$,93,96,103,132,"Xamã do Vento",1263,10,.@label$;
 		areamonster .@map$,93,96,103,132,"Marduk",1140,10,.@label$;
 		break;
 	case 93:
 		areamonster .@map$,181,96,191,132,"Seyren Windsor",1634,15,.@label$;
-		areamonster .@map$,181,96,191,132,"Bloody Knight",1268,10,.@label$;
-		areamonster .@map$,181,96,191,132,"Abysmal Knight",1219,10,.@label$;
-		areamonster .@map$,181,96,191,132,"Wanderer",1208,10,.@label$;
+		areamonster .@map$,181,96,191,132,"Cavaleiro Sanguinário",1268,10,.@label$;
+		areamonster .@map$,181,96,191,132,"Cavaleiro do Abismo",1219,10,.@label$;
+		areamonster .@map$,181,96,191,132,"Andarilho",1208,10,.@label$;
 		break;
 	case 94:
-		areamonster .@map$,267,96,277,132,"Sword Master",1829,15,.@label$;
-		areamonster .@map$,267,96,277,132,"Bow Master",1830,15,.@label$;
+		areamonster .@map$,267,96,277,132,"Espadachim Guardião",1829,15,.@label$;
+		areamonster .@map$,267,96,277,132,"Arqueiro Guardião",1830,15,.@label$;
 		break;
 	case 95:
-		areamonster .@map$,352,96,362,132,"Beelzebub",1873,1,.@label$;
-		areamonster .@map$,352,96,362,132,"Hunter Fly",1035,30,.@label$;
-		areamonster .@map$,352,96,362,132,"Steel Chonchon",1042,5,.@label$;
-		areamonster .@map$,352,96,362,132,"Dragon FLy",1091,5,.@label$;
+		areamonster .@map$,352,96,362,132,"Belzebu",1873,1,.@label$;
+		areamonster .@map$,352,96,362,132,"Mosca Caçadora",1035,30,.@label$;
+		areamonster .@map$,352,96,362,132,"Chonchon de Aço",1042,5,.@label$;
+		areamonster .@map$,352,96,362,132,"Libélula",1091,5,.@label$;
 		areamonster .@map$,352,96,362,132,"Chonchon",1011,5,.@label$;
 		break;
 	case 96:
-		areamonster .@map$,9,9,19,45,"Valkyrie",1765,5,.@label$;
+		areamonster .@map$,9,9,19,45,"Valquíria",1765,5,.@label$;
 		areamonster .@map$,9,9,19,45,"Skeggiold",1755,10,.@label$;
 		areamonster .@map$,9,9,19,45,"Skeggiold",1754,10,.@label$;
 		break;
 	case 97:
-		areamonster .@map$,93,9,103,45,"Incarnation of Morroc",1918,5,.@label$;
-		areamonster .@map$,93,9,103,45,"Incarnation of Morroc",1919,5,.@label$;
-		areamonster .@map$,93,9,103,45,"Incarnation of Morroc",1920,5,.@label$;
-		areamonster .@map$,93,9,103,45,"Incarnation of Morroc",1921,5,.@label$;
+		areamonster .@map$,93,9,103,45,"Encarnação de Morroc",1918,5,.@label$;
+		areamonster .@map$,93,9,103,45,"Encarnação de Morroc",1919,5,.@label$;
+		areamonster .@map$,93,9,103,45,"Encarnação de Morroc",1920,5,.@label$;
+		areamonster .@map$,93,9,103,45,"Encarnação de Morroc",1921,5,.@label$;
 		break;
 	case 98:
 		areamonster .@map$,181,9,191,45,"Kathryne Keyron",1639,2,.@label$;
@@ -1025,15 +1025,15 @@ function	script	F_Tower_Monster	{
 			else if (.@mob_ran == 6) 
 				areamonster .@map$,267,9,277,45,"Cecil Damon",1638,2,.@label$;
 			else if (.@mob_ran == 7) 
-				areamonster .@map$,267,9,277,45,"Incarnation of Morroc",1918,5,.@label$;
+				areamonster .@map$,267,9,277,45,"Encarnação de Morroc",1918,5,.@label$;
 			else if (.@mob_ran == 8) 
-				areamonster .@map$,267,9,277,45,"Incarnation of Morroc",1919,5,.@label$;
+				areamonster .@map$,267,9,277,45,"Encarnação de Morroc",1919,5,.@label$;
 			else if (.@mob_ran == 9) 
-				areamonster .@map$,267,9,277,45,"Incarnation of Morroc",1920,5,.@label$;
+				areamonster .@map$,267,9,277,45,"Encarnação de Morroc",1920,5,.@label$;
 			else if (.@mob_ran == 10) 
-				areamonster .@map$,267,9,277,45,"Incarnation of Morroc",1921,5,.@label$;
+				areamonster .@map$,267,9,277,45,"Encarnação de Morroc",1921,5,.@label$;
 			else if (.@mob_ran == 11) 
-				areamonster .@map$,267,9,277,45,"Valkyrie",1765,5,.@label$;
+				areamonster .@map$,267,9,277,45,"Valquíria",1765,5,.@label$;
 			else if (.@mob_ran == 12) 
 				areamonster .@map$,267,9,277,45,"Skeggiold",1755,10,.@label$;
 			else if (.@mob_ran == 13) 
@@ -1041,37 +1041,37 @@ function	script	F_Tower_Monster	{
 			else if (.@mob_ran == 14) 
 				areamonster .@map$,267,9,277,45,"Seyren Windsor",1634,15,.@label$;
 			else if (.@mob_ran == 15) 
-				areamonster .@map$,267,9,277,45,"Bloody Knight",1268,10,.@label$;
+				areamonster .@map$,267,9,277,45,"Cavaleiro Sanguinário",1268,10,.@label$;
 			else if (.@mob_ran == 16) 
-				areamonster .@map$,267,9,277,45,"Abysmal Knight",1219,10,.@label$;
+				areamonster .@map$,267,9,277,45,"Cavaleiro do Abismo",1219,10,.@label$;
 			else if (.@mob_ran == 17) 
-				areamonster .@map$,267,9,277,45,"Wanderer",1208,10,.@label$;
+				areamonster .@map$,267,9,277,45,"Andarilho",1208,10,.@label$;
 			else if (.@mob_ran == 18) 
-				areamonster .@map$,267,9,277,45,"Sword Master",1829,15,.@label$;
+				areamonster .@map$,267,9,277,45,"Espadachim Guardião",1829,15,.@label$;
 			else if (.@mob_ran == 19) 
-				areamonster .@map$,267,9,277,45,"Bow Master",1830,15,.@label$;
+				areamonster .@map$,267,9,277,45,"Arqueiro Guardião",1830,15,.@label$;
 			else if (.@mob_ran == 20) 
 				areamonster .@map$,267,9,277,45,"Kathryne Keyron",1639,15,.@label$;
 			else if (.@mob_ran == 21) 
-				areamonster .@map$,267,9,277,45,"Elder",1377,10,.@label$;
+				areamonster .@map$,267,9,277,45,"Ancião",1377,10,.@label$;
 			else if (.@mob_ran == 22) 
 				areamonster .@map$,267,9,277,45,"Laurell Weinder",1657,10,.@label$;
 			else if (.@mob_ran == 23) 
-				areamonster .@map$,267,9,277,45,"Wind Ghost",1263,10,.@label$;
+				areamonster .@map$,267,9,277,45,"Xamã do Vento",1263,10,.@label$;
 			else if (.@mob_ran == 24) 
 				areamonster .@map$,267,9,277,45,"Marduk",1140,10,.@label$;
 			else if (.@mob_ran == 25) 
 				areamonster .@map$,267,9,277,45,"Cecil Damon",1638,10,.@label$;
 			else if (.@mob_ran == 26) 
-				areamonster .@map$,267,9,277,45,"Bow Master",1830,10,.@label$;
+				areamonster .@map$,267,9,277,45,"Arqueiro Guardião",1830,10,.@label$;
 			else if (.@mob_ran == 27) 
 				areamonster .@map$,267,9,277,45,"Kavach Icarus",1656,30,.@label$;
 			else if (.@mob_ran == 28) 
-				areamonster .@map$,267,9,277,45,"Baroness of Retribution",1702,10,.@label$;
+				areamonster .@map$,267,9,277,45,"Baronesa da Retribuição",1702,10,.@label$;
 			else if (.@mob_ran == 29) 
-				areamonster .@map$,267,9,277,45,"Lady Solace",1703,10,.@label$;
+				areamonster .@map$,267,9,277,45,"Senhora do Conforto",1703,10,.@label$;
 			else 
-				areamonster .@map$,267,9,277,45,"False Angel",1371,10,.@label$;
+				areamonster .@map$,267,9,277,45,"Anjo Fajuto",1371,10,.@label$;
 		}
 		break;
 	}
